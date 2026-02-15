@@ -6,6 +6,5 @@ hf_models/
 git.sh
 outputs/
 utils/
-assets/
 __pycache__/
 *.safetensors

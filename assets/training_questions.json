@@ -1,0 +1,2402 @@
+[
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A1, B1, C1, D1, E1 sit in a row facing north. A1 sits at one end. B1 sits immediate right of A1. Who sits next to B1?",
+    "choices": [
+      "A) A1",
+      "B) C1",
+      "C) D1",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A2 is the mother of B2. B2 is the brother of C2. How is A2 related to C2?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A4 are B4. Some B4 are C4. No C4 are D4. Conclusion I: Some A4 are C4. Conclusion II: Some B4 are not D4.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A5, B5, C5, D5, E5 sit in a row facing north. A5 sits at one end. B5 sits immediate right of A5. Who sits next to B5?",
+    "choices": [
+      "A) A5",
+      "B) C5",
+      "C) D5",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A6 is the mother of B6. B6 is the brother of C6. How is A6 related to C6?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A8 are B8. Some B8 are C8. No C8 are D8. Conclusion I: Some A8 are C8. Conclusion II: Some B8 are not D8.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A9, B9, C9, D9, E9 sit in a row facing north. A9 sits at one end. B9 sits immediate right of A9. Who sits next to B9?",
+    "choices": [
+      "A) A9",
+      "B) C9",
+      "C) D9",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A10 is the mother of B10. B10 is the brother of C10. How is A10 related to C10?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A12 are B12. Some B12 are C12. No C12 are D12. Conclusion I: Some A12 are C12. Conclusion II: Some B12 are not D12.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A13, B13, C13, D13, E13 sit in a row facing north. A13 sits at one end. B13 sits immediate right of A13. Who sits next to B13?",
+    "choices": [
+      "A) A13",
+      "B) C13",
+      "C) D13",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A14 is the mother of B14. B14 is the brother of C14. How is A14 related to C14?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A16 are B16. Some B16 are C16. No C16 are D16. Conclusion I: Some A16 are C16. Conclusion II: Some B16 are not D16.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A17, B17, C17, D17, E17 sit in a row facing north. A17 sits at one end. B17 sits immediate right of A17. Who sits next to B17?",
+    "choices": [
+      "A) A17",
+      "B) C17",
+      "C) D17",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A18 is the mother of B18. B18 is the brother of C18. How is A18 related to C18?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A20 are B20. Some B20 are C20. No C20 are D20. Conclusion I: Some A20 are C20. Conclusion II: Some B20 are not D20.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A21, B21, C21, D21, E21 sit in a row facing north. A21 sits at one end. B21 sits immediate right of A21. Who sits next to B21?",
+    "choices": [
+      "A) A21",
+      "B) C21",
+      "C) D21",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A22 is the mother of B22. B22 is the brother of C22. How is A22 related to C22?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A24 are B24. Some B24 are C24. No C24 are D24. Conclusion I: Some A24 are C24. Conclusion II: Some B24 are not D24.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A25, B25, C25, D25, E25 sit in a row facing north. A25 sits at one end. B25 sits immediate right of A25. Who sits next to B25?",
+    "choices": [
+      "A) A25",
+      "B) C25",
+      "C) D25",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A26 is the mother of B26. B26 is the brother of C26. How is A26 related to C26?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A28 are B28. Some B28 are C28. No C28 are D28. Conclusion I: Some A28 are C28. Conclusion II: Some B28 are not D28.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A29, B29, C29, D29, E29 sit in a row facing north. A29 sits at one end. B29 sits immediate right of A29. Who sits next to B29?",
+    "choices": [
+      "A) A29",
+      "B) C29",
+      "C) D29",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A30 is the mother of B30. B30 is the brother of C30. How is A30 related to C30?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A32 are B32. Some B32 are C32. No C32 are D32. Conclusion I: Some A32 are C32. Conclusion II: Some B32 are not D32.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A33, B33, C33, D33, E33 sit in a row facing north. A33 sits at one end. B33 sits immediate right of A33. Who sits next to B33?",
+    "choices": [
+      "A) A33",
+      "B) C33",
+      "C) D33",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A34 is the mother of B34. B34 is the brother of C34. How is A34 related to C34?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A36 are B36. Some B36 are C36. No C36 are D36. Conclusion I: Some A36 are C36. Conclusion II: Some B36 are not D36.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A37, B37, C37, D37, E37 sit in a row facing north. A37 sits at one end. B37 sits immediate right of A37. Who sits next to B37?",
+    "choices": [
+      "A) A37",
+      "B) C37",
+      "C) D37",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A38 is the mother of B38. B38 is the brother of C38. How is A38 related to C38?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A40 are B40. Some B40 are C40. No C40 are D40. Conclusion I: Some A40 are C40. Conclusion II: Some B40 are not D40.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A41, B41, C41, D41, E41 sit in a row facing north. A41 sits at one end. B41 sits immediate right of A41. Who sits next to B41?",
+    "choices": [
+      "A) A41",
+      "B) C41",
+      "C) D41",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A42 is the mother of B42. B42 is the brother of C42. How is A42 related to C42?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A44 are B44. Some B44 are C44. No C44 are D44. Conclusion I: Some A44 are C44. Conclusion II: Some B44 are not D44.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A45, B45, C45, D45, E45 sit in a row facing north. A45 sits at one end. B45 sits immediate right of A45. Who sits next to B45?",
+    "choices": [
+      "A) A45",
+      "B) C45",
+      "C) D45",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A46 is the mother of B46. B46 is the brother of C46. How is A46 related to C46?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A48 are B48. Some B48 are C48. No C48 are D48. Conclusion I: Some A48 are C48. Conclusion II: Some B48 are not D48.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A49, B49, C49, D49, E49 sit in a row facing north. A49 sits at one end. B49 sits immediate right of A49. Who sits next to B49?",
+    "choices": [
+      "A) A49",
+      "B) C49",
+      "C) D49",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A50 is the mother of B50. B50 is the brother of C50. How is A50 related to C50?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A52 are B52. Some B52 are C52. No C52 are D52. Conclusion I: Some A52 are C52. Conclusion II: Some B52 are not D52.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A53, B53, C53, D53, E53 sit in a row facing north. A53 sits at one end. B53 sits immediate right of A53. Who sits next to B53?",
+    "choices": [
+      "A) A53",
+      "B) C53",
+      "C) D53",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A54 is the mother of B54. B54 is the brother of C54. How is A54 related to C54?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A56 are B56. Some B56 are C56. No C56 are D56. Conclusion I: Some A56 are C56. Conclusion II: Some B56 are not D56.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A57, B57, C57, D57, E57 sit in a row facing north. A57 sits at one end. B57 sits immediate right of A57. Who sits next to B57?",
+    "choices": [
+      "A) A57",
+      "B) C57",
+      "C) D57",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A58 is the mother of B58. B58 is the brother of C58. How is A58 related to C58?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A60 are B60. Some B60 are C60. No C60 are D60. Conclusion I: Some A60 are C60. Conclusion II: Some B60 are not D60.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A61, B61, C61, D61, E61 sit in a row facing north. A61 sits at one end. B61 sits immediate right of A61. Who sits next to B61?",
+    "choices": [
+      "A) A61",
+      "B) C61",
+      "C) D61",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A62 is the mother of B62. B62 is the brother of C62. How is A62 related to C62?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A64 are B64. Some B64 are C64. No C64 are D64. Conclusion I: Some A64 are C64. Conclusion II: Some B64 are not D64.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A65, B65, C65, D65, E65 sit in a row facing north. A65 sits at one end. B65 sits immediate right of A65. Who sits next to B65?",
+    "choices": [
+      "A) A65",
+      "B) C65",
+      "C) D65",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A66 is the mother of B66. B66 is the brother of C66. How is A66 related to C66?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A68 are B68. Some B68 are C68. No C68 are D68. Conclusion I: Some A68 are C68. Conclusion II: Some B68 are not D68.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A69, B69, C69, D69, E69 sit in a row facing north. A69 sits at one end. B69 sits immediate right of A69. Who sits next to B69?",
+    "choices": [
+      "A) A69",
+      "B) C69",
+      "C) D69",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A70 is the mother of B70. B70 is the brother of C70. How is A70 related to C70?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A72 are B72. Some B72 are C72. No C72 are D72. Conclusion I: Some A72 are C72. Conclusion II: Some B72 are not D72.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A73, B73, C73, D73, E73 sit in a row facing north. A73 sits at one end. B73 sits immediate right of A73. Who sits next to B73?",
+    "choices": [
+      "A) A73",
+      "B) C73",
+      "C) D73",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A74 is the mother of B74. B74 is the brother of C74. How is A74 related to C74?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A76 are B76. Some B76 are C76. No C76 are D76. Conclusion I: Some A76 are C76. Conclusion II: Some B76 are not D76.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A77, B77, C77, D77, E77 sit in a row facing north. A77 sits at one end. B77 sits immediate right of A77. Who sits next to B77?",
+    "choices": [
+      "A) A77",
+      "B) C77",
+      "C) D77",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A78 is the mother of B78. B78 is the brother of C78. How is A78 related to C78?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A80 are B80. Some B80 are C80. No C80 are D80. Conclusion I: Some A80 are C80. Conclusion II: Some B80 are not D80.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A81, B81, C81, D81, E81 sit in a row facing north. A81 sits at one end. B81 sits immediate right of A81. Who sits next to B81?",
+    "choices": [
+      "A) A81",
+      "B) C81",
+      "C) D81",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A82 is the mother of B82. B82 is the brother of C82. How is A82 related to C82?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A84 are B84. Some B84 are C84. No C84 are D84. Conclusion I: Some A84 are C84. Conclusion II: Some B84 are not D84.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A85, B85, C85, D85, E85 sit in a row facing north. A85 sits at one end. B85 sits immediate right of A85. Who sits next to B85?",
+    "choices": [
+      "A) A85",
+      "B) C85",
+      "C) D85",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A86 is the mother of B86. B86 is the brother of C86. How is A86 related to C86?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A88 are B88. Some B88 are C88. No C88 are D88. Conclusion I: Some A88 are C88. Conclusion II: Some B88 are not D88.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A89, B89, C89, D89, E89 sit in a row facing north. A89 sits at one end. B89 sits immediate right of A89. Who sits next to B89?",
+    "choices": [
+      "A) A89",
+      "B) C89",
+      "C) D89",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A90 is the mother of B90. B90 is the brother of C90. How is A90 related to C90?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A92 are B92. Some B92 are C92. No C92 are D92. Conclusion I: Some A92 are C92. Conclusion II: Some B92 are not D92.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A93, B93, C93, D93, E93 sit in a row facing north. A93 sits at one end. B93 sits immediate right of A93. Who sits next to B93?",
+    "choices": [
+      "A) A93",
+      "B) C93",
+      "C) D93",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A94 is the mother of B94. B94 is the brother of C94. How is A94 related to C94?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A96 are B96. Some B96 are C96. No C96 are D96. Conclusion I: Some A96 are C96. Conclusion II: Some B96 are not D96.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A97, B97, C97, D97, E97 sit in a row facing north. A97 sits at one end. B97 sits immediate right of A97. Who sits next to B97?",
+    "choices": [
+      "A) A97",
+      "B) C97",
+      "C) D97",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A98 is the mother of B98. B98 is the brother of C98. How is A98 related to C98?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A100 are B100. Some B100 are C100. No C100 are D100. Conclusion I: Some A100 are C100. Conclusion II: Some B100 are not D100.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A101, B101, C101, D101, E101 sit in a row facing north. A101 sits at one end. B101 sits immediate right of A101. Who sits next to B101?",
+    "choices": [
+      "A) A101",
+      "B) C101",
+      "C) D101",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A102 is the mother of B102. B102 is the brother of C102. How is A102 related to C102?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A104 are B104. Some B104 are C104. No C104 are D104. Conclusion I: Some A104 are C104. Conclusion II: Some B104 are not D104.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A105, B105, C105, D105, E105 sit in a row facing north. A105 sits at one end. B105 sits immediate right of A105. Who sits next to B105?",
+    "choices": [
+      "A) A105",
+      "B) C105",
+      "C) D105",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A106 is the mother of B106. B106 is the brother of C106. How is A106 related to C106?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A108 are B108. Some B108 are C108. No C108 are D108. Conclusion I: Some A108 are C108. Conclusion II: Some B108 are not D108.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A109, B109, C109, D109, E109 sit in a row facing north. A109 sits at one end. B109 sits immediate right of A109. Who sits next to B109?",
+    "choices": [
+      "A) A109",
+      "B) C109",
+      "C) D109",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A110 is the mother of B110. B110 is the brother of C110. How is A110 related to C110?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A112 are B112. Some B112 are C112. No C112 are D112. Conclusion I: Some A112 are C112. Conclusion II: Some B112 are not D112.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A113, B113, C113, D113, E113 sit in a row facing north. A113 sits at one end. B113 sits immediate right of A113. Who sits next to B113?",
+    "choices": [
+      "A) A113",
+      "B) C113",
+      "C) D113",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A114 is the mother of B114. B114 is the brother of C114. How is A114 related to C114?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A116 are B116. Some B116 are C116. No C116 are D116. Conclusion I: Some A116 are C116. Conclusion II: Some B116 are not D116.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A117, B117, C117, D117, E117 sit in a row facing north. A117 sits at one end. B117 sits immediate right of A117. Who sits next to B117?",
+    "choices": [
+      "A) A117",
+      "B) C117",
+      "C) D117",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A118 is the mother of B118. B118 is the brother of C118. How is A118 related to C118?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A120 are B120. Some B120 are C120. No C120 are D120. Conclusion I: Some A120 are C120. Conclusion II: Some B120 are not D120.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A121, B121, C121, D121, E121 sit in a row facing north. A121 sits at one end. B121 sits immediate right of A121. Who sits next to B121?",
+    "choices": [
+      "A) A121",
+      "B) C121",
+      "C) D121",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A122 is the mother of B122. B122 is the brother of C122. How is A122 related to C122?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A124 are B124. Some B124 are C124. No C124 are D124. Conclusion I: Some A124 are C124. Conclusion II: Some B124 are not D124.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A125, B125, C125, D125, E125 sit in a row facing north. A125 sits at one end. B125 sits immediate right of A125. Who sits next to B125?",
+    "choices": [
+      "A) A125",
+      "B) C125",
+      "C) D125",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A126 is the mother of B126. B126 is the brother of C126. How is A126 related to C126?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A128 are B128. Some B128 are C128. No C128 are D128. Conclusion I: Some A128 are C128. Conclusion II: Some B128 are not D128.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A129, B129, C129, D129, E129 sit in a row facing north. A129 sits at one end. B129 sits immediate right of A129. Who sits next to B129?",
+    "choices": [
+      "A) A129",
+      "B) C129",
+      "C) D129",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A130 is the mother of B130. B130 is the brother of C130. How is A130 related to C130?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A132 are B132. Some B132 are C132. No C132 are D132. Conclusion I: Some A132 are C132. Conclusion II: Some B132 are not D132.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A133, B133, C133, D133, E133 sit in a row facing north. A133 sits at one end. B133 sits immediate right of A133. Who sits next to B133?",
+    "choices": [
+      "A) A133",
+      "B) C133",
+      "C) D133",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A134 is the mother of B134. B134 is the brother of C134. How is A134 related to C134?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A136 are B136. Some B136 are C136. No C136 are D136. Conclusion I: Some A136 are C136. Conclusion II: Some B136 are not D136.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A137, B137, C137, D137, E137 sit in a row facing north. A137 sits at one end. B137 sits immediate right of A137. Who sits next to B137?",
+    "choices": [
+      "A) A137",
+      "B) C137",
+      "C) D137",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A138 is the mother of B138. B138 is the brother of C138. How is A138 related to C138?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A140 are B140. Some B140 are C140. No C140 are D140. Conclusion I: Some A140 are C140. Conclusion II: Some B140 are not D140.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A141, B141, C141, D141, E141 sit in a row facing north. A141 sits at one end. B141 sits immediate right of A141. Who sits next to B141?",
+    "choices": [
+      "A) A141",
+      "B) C141",
+      "C) D141",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A142 is the mother of B142. B142 is the brother of C142. How is A142 related to C142?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A144 are B144. Some B144 are C144. No C144 are D144. Conclusion I: Some A144 are C144. Conclusion II: Some B144 are not D144.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A145, B145, C145, D145, E145 sit in a row facing north. A145 sits at one end. B145 sits immediate right of A145. Who sits next to B145?",
+    "choices": [
+      "A) A145",
+      "B) C145",
+      "C) D145",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A146 is the mother of B146. B146 is the brother of C146. How is A146 related to C146?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A148 are B148. Some B148 are C148. No C148 are D148. Conclusion I: Some A148 are C148. Conclusion II: Some B148 are not D148.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A149, B149, C149, D149, E149 sit in a row facing north. A149 sits at one end. B149 sits immediate right of A149. Who sits next to B149?",
+    "choices": [
+      "A) A149",
+      "B) C149",
+      "C) D149",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A150 is the mother of B150. B150 is the brother of C150. How is A150 related to C150?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A152 are B152. Some B152 are C152. No C152 are D152. Conclusion I: Some A152 are C152. Conclusion II: Some B152 are not D152.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A153, B153, C153, D153, E153 sit in a row facing north. A153 sits at one end. B153 sits immediate right of A153. Who sits next to B153?",
+    "choices": [
+      "A) A153",
+      "B) C153",
+      "C) D153",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A154 is the mother of B154. B154 is the brother of C154. How is A154 related to C154?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A156 are B156. Some B156 are C156. No C156 are D156. Conclusion I: Some A156 are C156. Conclusion II: Some B156 are not D156.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A157, B157, C157, D157, E157 sit in a row facing north. A157 sits at one end. B157 sits immediate right of A157. Who sits next to B157?",
+    "choices": [
+      "A) A157",
+      "B) C157",
+      "C) D157",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A158 is the mother of B158. B158 is the brother of C158. How is A158 related to C158?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A160 are B160. Some B160 are C160. No C160 are D160. Conclusion I: Some A160 are C160. Conclusion II: Some B160 are not D160.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A161, B161, C161, D161, E161 sit in a row facing north. A161 sits at one end. B161 sits immediate right of A161. Who sits next to B161?",
+    "choices": [
+      "A) A161",
+      "B) C161",
+      "C) D161",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A162 is the mother of B162. B162 is the brother of C162. How is A162 related to C162?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A164 are B164. Some B164 are C164. No C164 are D164. Conclusion I: Some A164 are C164. Conclusion II: Some B164 are not D164.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A165, B165, C165, D165, E165 sit in a row facing north. A165 sits at one end. B165 sits immediate right of A165. Who sits next to B165?",
+    "choices": [
+      "A) A165",
+      "B) C165",
+      "C) D165",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A166 is the mother of B166. B166 is the brother of C166. How is A166 related to C166?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A168 are B168. Some B168 are C168. No C168 are D168. Conclusion I: Some A168 are C168. Conclusion II: Some B168 are not D168.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A169, B169, C169, D169, E169 sit in a row facing north. A169 sits at one end. B169 sits immediate right of A169. Who sits next to B169?",
+    "choices": [
+      "A) A169",
+      "B) C169",
+      "C) D169",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A170 is the mother of B170. B170 is the brother of C170. How is A170 related to C170?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A172 are B172. Some B172 are C172. No C172 are D172. Conclusion I: Some A172 are C172. Conclusion II: Some B172 are not D172.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A173, B173, C173, D173, E173 sit in a row facing north. A173 sits at one end. B173 sits immediate right of A173. Who sits next to B173?",
+    "choices": [
+      "A) A173",
+      "B) C173",
+      "C) D173",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A174 is the mother of B174. B174 is the brother of C174. How is A174 related to C174?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A176 are B176. Some B176 are C176. No C176 are D176. Conclusion I: Some A176 are C176. Conclusion II: Some B176 are not D176.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A177, B177, C177, D177, E177 sit in a row facing north. A177 sits at one end. B177 sits immediate right of A177. Who sits next to B177?",
+    "choices": [
+      "A) A177",
+      "B) C177",
+      "C) D177",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A178 is the mother of B178. B178 is the brother of C178. How is A178 related to C178?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A180 are B180. Some B180 are C180. No C180 are D180. Conclusion I: Some A180 are C180. Conclusion II: Some B180 are not D180.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A181, B181, C181, D181, E181 sit in a row facing north. A181 sits at one end. B181 sits immediate right of A181. Who sits next to B181?",
+    "choices": [
+      "A) A181",
+      "B) C181",
+      "C) D181",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A182 is the mother of B182. B182 is the brother of C182. How is A182 related to C182?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: D2, F4, H8, J16, ___",
+    "choices": [
+      "A) L32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A184 are B184. Some B184 are C184. No C184 are D184. Conclusion I: Some A184 are C184. Conclusion II: Some B184 are not D184.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A185, B185, C185, D185, E185 sit in a row facing north. A185 sits at one end. B185 sits immediate right of A185. Who sits next to B185?",
+    "choices": [
+      "A) A185",
+      "B) C185",
+      "C) D185",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A186 is the mother of B186. B186 is the brother of C186. How is A186 related to C186?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: H2, J4, L8, N16, ___",
+    "choices": [
+      "A) P32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A188 are B188. Some B188 are C188. No C188 are D188. Conclusion I: Some A188 are C188. Conclusion II: Some B188 are not D188.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A189, B189, C189, D189, E189 sit in a row facing north. A189 sits at one end. B189 sits immediate right of A189. Who sits next to B189?",
+    "choices": [
+      "A) A189",
+      "B) C189",
+      "C) D189",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A190 is the mother of B190. B190 is the brother of C190. How is A190 related to C190?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: L2, N4, P8, R16, ___",
+    "choices": [
+      "A) T32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A192 are B192. Some B192 are C192. No C192 are D192. Conclusion I: Some A192 are C192. Conclusion II: Some B192 are not D192.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A193, B193, C193, D193, E193 sit in a row facing north. A193 sits at one end. B193 sits immediate right of A193. Who sits next to B193?",
+    "choices": [
+      "A) A193",
+      "B) C193",
+      "C) D193",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A194 is the mother of B194. B194 is the brother of C194. How is A194 related to C194?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: P2, R4, T8, V16, ___",
+    "choices": [
+      "A) X32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A196 are B196. Some B196 are C196. No C196 are D196. Conclusion I: Some A196 are C196. Conclusion II: Some B196 are not D196.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  },
+  {
+    "topic": "Seating Arrangements (Linear)",
+    "question": "Five persons A197, B197, C197, D197, E197 sit in a row facing north. A197 sits at one end. B197 sits immediate right of A197. Who sits next to B197?",
+    "choices": [
+      "A) A197",
+      "B) C197",
+      "C) D197",
+      "D) Cannot be determined"
+    ],
+    "answer": "A",
+    "explanation": "If A sits at one end and B sits immediately right of A, then A is next to B."
+  },
+  {
+    "topic": "Blood Relations and Family Tree",
+    "question": "Person A198 is the mother of B198. B198 is the brother of C198. How is A198 related to C198?",
+    "choices": [
+      "A) Mother",
+      "B) Aunt",
+      "C) Sister",
+      "D) Cousin"
+    ],
+    "answer": "A",
+    "explanation": "Since B and C are siblings and A is mother of B, A is also mother of C."
+  },
+  {
+    "topic": "Mixed Series (Alphanumeric)",
+    "question": "Find the next term: T2, V4, X8, Z16, ___",
+    "choices": [
+      "A) B32",
+      "B) Incorrect1",
+      "C) Incorrect2",
+      "D) Incorrect3"
+    ],
+    "answer": "A",
+    "explanation": "Letters increase by 2 positions each step and numbers double."
+  },
+  {
+    "topic": "Syllogisms",
+    "question": "All A200 are B200. Some B200 are C200. No C200 are D200. Conclusion I: Some A200 are C200. Conclusion II: Some B200 are not D200.",
+    "choices": [
+      "A) Only Conclusion I follows",
+      "B) Only Conclusion II follows",
+      "C) Both follow",
+      "D) Neither follows"
+    ],
+    "answer": "B",
+    "explanation": "Conclusion I does not necessarily follow. Conclusion II follows because some B are C and no C are D, so some B are not D."
+  }
+]

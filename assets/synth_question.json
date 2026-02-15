@@ -1,0 +1,1088 @@
+[
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All pens are pencils.\nStatement II: Some pencils are erasers.\nStatement III: No eraser is sharpener.\nConclusion I: Some pens are erasers.\nConclusion II: No pen is sharpener.",
+        "choices": [
+            "A) Only conclusion I follows",
+            "B) Only conclusion II follows",
+            "C) Both conclusions follow",
+            "D) Neither conclusion follows"
+        ],
+        "expected_answer": "D",
+        "explanation": "No definite relation between pens and erasers; also no direct link between pens and sharpeners."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some cats are dogs.\nStatement II: All dogs are animals.\nConclusion I: Some cats are animals.\nConclusion II: All animals are dogs.",
+        "choices": [
+            "A) Only conclusion I follows",
+            "B) Only conclusion II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Some cats overlap dogs and all dogs are animals, so some cats are animals."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: No chair is table.\nStatement II: All tables are wood.\nConclusion I: No chair is wood.\nConclusion II: Some wood are tables.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "B",
+        "explanation": "All tables are wood ensures some wood are tables; no link between chair and wood."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All mangoes are fruits.\nStatement II: Some fruits are sweet.\nConclusion I: Some mangoes are sweet.\nConclusion II: All sweet are mangoes.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "D",
+        "explanation": "Sweet fruits may not overlap mangoes; no reverse relation."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some cars are bikes.\nStatement II: No bike is truck.\nConclusion I: Some cars are not truck.\nConclusion II: All cars are trucks.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Since some cars are bikes and no bike is truck, those cars are not trucks."
+    },
+
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All flowers are plants.\nStatement II: No plant is animal.\nConclusion I: No flower is animal.\nConclusion II: Some animals are flowers.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Flowers are plants and plants are not animals."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some teachers are writers.\nStatement II: All writers are poets.\nConclusion I: Some teachers are poets.\nConclusion II: All teachers are poets.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Some teachers overlap writers; writers are poets."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: No book is pen.\nStatement II: Some pens are blue.\nConclusion I: Some books are blue.\nConclusion II: Some blue are pens.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "B",
+        "explanation": "Some pens are blue directly implies some blue are pens."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All squares are rectangles.\nStatement II: Some rectangles are circles.\nConclusion I: Some squares are circles.\nConclusion II: Some rectangles are squares.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "B",
+        "explanation": "All squares are rectangles implies some rectangles are squares."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some apples are bananas.\nStatement II: All bananas are fruits.\nConclusion I: Some apples are fruits.\nConclusion II: All fruits are apples.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Some apples overlap bananas; bananas are fruits."
+    },
+
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All laptops are devices.\nStatement II: No device is paper.\nConclusion I: No laptop is paper.\nConclusion II: Some papers are devices.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Laptops are devices and devices are not paper."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some birds are parrots.\nStatement II: All parrots are green.\nConclusion I: Some birds are green.\nConclusion II: All birds are green.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Some birds overlap parrots; parrots are green."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: No doctor is engineer.\nStatement II: Some engineers are scientists.\nConclusion I: Some scientists are not doctors.\nConclusion II: All scientists are doctors.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Engineers are not doctors; some scientists overlap engineers."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All rivers are water.\nStatement II: Some water is salty.\nConclusion I: Some rivers are salty.\nConclusion II: All salty is river.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "D",
+        "explanation": "No guaranteed overlap between rivers and salty water."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some phones are smart.\nStatement II: All smart are expensive.\nConclusion I: Some phones are expensive.\nConclusion II: All phones are expensive.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Some phones overlap smart; smart are expensive."
+    },
+
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All metals are solids.\nStatement II: No solid is liquid.\nConclusion I: No metal is liquid.\nConclusion II: Some liquids are metals.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Metals are solids; solids are not liquids."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some shoes are leather.\nStatement II: All leather is costly.\nConclusion I: Some shoes are costly.\nConclusion II: All shoes are costly.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Some shoes overlap leather; leather is costly."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: No sun is moon.\nStatement II: Some moon are stars.\nConclusion I: Some stars are not sun.\nConclusion II: All stars are moon.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Moons are not suns; some stars overlap moon."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: All cups are utensils.\nStatement II: Some utensils are steel.\nConclusion I: Some cups are steel.\nConclusion II: Some steel are utensils.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "B",
+        "explanation": "Some utensils are steel; no guarantee cups overlap steel."
+    },
+    {
+        "topic": "Syllogisms",
+        "question": "Statement I: Some trains are fast.\nStatement II: All fast are modern.\nConclusion I: Some trains are modern.\nConclusion II: All trains are modern.",
+        "choices": [
+            "A) Only I follows",
+            "B) Only II follows",
+            "C) Both follow",
+            "D) Neither follows"
+        ],
+        "expected_answer": "A",
+        "explanation": "Some trains overlap fast; fast are modern."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight people A, B, C, D, E, F, G, H are sitting in a row facing north. D sits third to the left of H. B is second to the right of D. A sits at one of the ends. C is not an immediate neighbor of H. G sits between B and F. Who sits at the extreme right end?",
+        "choices": [
+            "A) A",
+            "B) C",
+            "C) F",
+            "D) G"
+        ],
+        "expected_answer": "C",
+        "explanation": "Placing D relative to H and arranging B, G, F accordingly forces F to occupy the extreme right."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Seven friends sit in a circular arrangement facing the center. P sits second to the right of Q. R is immediate left of Q. S sits opposite to P. T is not adjacent to Q. U sits between S and T. Who sits immediate right of R?",
+        "choices": [
+            "A) Q",
+            "B) P",
+            "C) T",
+            "D) U"
+        ],
+        "expected_answer": "A",
+        "explanation": "Following clockwise placement from Q determines R's right neighbor as Q."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Six persons A, B, C, D, E, F are seated in a row. A is not at an end. D is to the immediate left of B. C is second to the right of A. F is at the extreme right. Who is second to the left of E?",
+        "choices": [
+            "A) A",
+            "B) D",
+            "C) C",
+            "D) B"
+        ],
+        "expected_answer": "B",
+        "explanation": "Arranging per constraints yields D as second left of E."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Nine people sit in a circle facing outward. A sits opposite B. C is immediate left of A. D sits second to the right of B. E is not adjacent to C. F sits between E and D. Who sits immediate right of C?",
+        "choices": [
+            "A) A",
+            "B) E",
+            "C) F",
+            "D) H"
+        ],
+        "expected_answer": "B",
+        "explanation": "Careful anti-clockwise placement gives E at immediate right of C."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight persons sit in a row. M is fourth to the left of N. O sits second to the right of M. P is immediate right of N. Q and R sit at the ends. Who sits between O and N?",
+        "choices": [
+            "A) P",
+            "B) M",
+            "C) S",
+            "D) Q"
+        ],
+        "expected_answer": "A",
+        "explanation": "Sequential placement positions P between O and N."
+    },
+
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Seven people sit in a circle facing center. X is third to the right of Y. Z sits opposite Y. W is immediate left of X. V is not adjacent to Z. Who sits immediate right of W?",
+        "choices": [
+            "A) X",
+            "B) Y",
+            "C) V",
+            "D) Z"
+        ],
+        "expected_answer": "A",
+        "explanation": "Clockwise placement makes X the immediate right of W."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight persons A to H sit in a straight line. B is not at any end. D is second to the left of B. F sits between D and E. A sits at extreme left. Who sits at extreme right?",
+        "choices": [
+            "A) C",
+            "B) H",
+            "C) G",
+            "D) E"
+        ],
+        "expected_answer": "B",
+        "explanation": "Completing logical placements results in H at the right end."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Six people sit in a circular table facing outward. A is immediate left of B. C sits second to the right of A. D is not adjacent to C. E sits opposite B. Who sits immediate right of D?",
+        "choices": [
+            "A) C",
+            "B) A",
+            "C) E",
+            "D) B"
+        ],
+        "expected_answer": "C",
+        "explanation": "Final arrangement places E to immediate right of D."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Ten persons sit in two parallel rows facing each other. A sits opposite B. C sits immediate left of A. D sits opposite E. F sits second to right of D. Who sits opposite C?",
+        "choices": [
+            "A) E",
+            "B) F",
+            "C) B",
+            "D) H"
+        ],
+        "expected_answer": "A",
+        "explanation": "Mapping row alignment gives E opposite C."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Seven persons sit in a row facing north. L sits third from left end. M sits second to right of L. N is immediate neighbor of M. O sits at extreme right. Who sits immediate left of O?",
+        "choices": [
+            "A) N",
+            "B) M",
+            "C) P",
+            "D) L"
+        ],
+        "expected_answer": "A",
+        "explanation": "Arranging sequentially places N immediately left of O."
+    },
+
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight friends sit around a square table facing center. One sits at each corner and one at each side center. P sits at a corner. Q sits immediate right of P. R sits opposite Q. S sits between R and T. Who sits opposite P?",
+        "choices": [
+            "A) R",
+            "B) T",
+            "C) U",
+            "D) S"
+        ],
+        "expected_answer": "D",
+        "explanation": "Based on square symmetry, S ends up opposite P."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Nine people sit in a row. C sits fourth from right. D sits third to left of C. A sits at one end. E sits between D and F. Who sits at leftmost end?",
+        "choices": [
+            "A) A",
+            "B) D",
+            "C) F",
+            "D) G"
+        ],
+        "expected_answer": "A",
+        "explanation": "Logical placement forces A at leftmost end."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Six people sit in circle facing center. B sits opposite C. D sits second to right of B. A is immediate left of C. Who sits immediate right of A?",
+        "choices": [
+            "A) C",
+            "B) B",
+            "C) D",
+            "D) E"
+        ],
+        "expected_answer": "B",
+        "explanation": "Following clockwise seating gives B to right of A."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight persons sit in a straight line. G is third to left of H. E sits at extreme right. F sits between G and D. Who sits immediate left of E?",
+        "choices": [
+            "A) H",
+            "B) D",
+            "C) F",
+            "D) C"
+        ],
+        "expected_answer": "A",
+        "explanation": "Arrangement forces H next to E."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Seven persons sit in circle facing outward. T sits second to left of U. V sits opposite T. W sits immediate right of U. Who sits immediate left of V?",
+        "choices": [
+            "A) T",
+            "B) U",
+            "C) X",
+            "D) W"
+        ],
+        "expected_answer": "D",
+        "explanation": "Anti-clockwise arrangement gives W left of V."
+    },
+
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight persons sit in two parallel rows. P faces Q. R sits immediate right of P. S sits opposite T. Who faces R?",
+        "choices": [
+            "A) T",
+            "B) Q",
+            "C) S",
+            "D) U"
+        ],
+        "expected_answer": "C",
+        "explanation": "Row mapping makes S face R."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Five people sit in a circle. A sits immediate right of B. C sits opposite A. D is not neighbor of B. Who sits between C and D?",
+        "choices": [
+            "A) A",
+            "B) B",
+            "C) E",
+            "D) C"
+        ],
+        "expected_answer": "C",
+        "explanation": "Only E can satisfy non-adjacency condition."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight persons sit in row. K sits at extreme left. L sits second to right of K. M sits third to right of L. Who sits at extreme right?",
+        "choices": [
+            "A) M",
+            "B) N",
+            "C) O",
+            "D) P"
+        ],
+        "expected_answer": "B",
+        "explanation": "Placement progression leads N to extreme right."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Seven persons sit around a table facing center. A sits third to right of B. C sits immediate left of A. D sits opposite C. Who sits immediate right of D?",
+        "choices": [
+            "A) B",
+            "B) E",
+            "C) F",
+            "D) A"
+        ],
+        "expected_answer": "B",
+        "explanation": "Circular deduction results in E at right of D."
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Nine persons sit in row facing north. A sits fifth from left. B sits third to right of A. C sits at extreme right. Who sits second to left of C?",
+        "choices": [
+            "A) D",
+            "B) B",
+            "C) A",
+            "D) E"
+        ],
+        "expected_answer": "B",
+        "explanation": "Counting from extreme right yields B."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "A is the daughter of B. B is the son of C. C has only one child. How is C related to A?",
+        "choices": [
+            "A) Father",
+            "B) Grandfather",
+            "C) Uncle",
+            "D) Brother"
+        ],
+        "expected_answer": "B",
+        "explanation": "C has only one child B. B is parent of A. Therefore C is grandfather of A."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "Pointing to a man, Rohan said, \"He is the husband of my mother's only sister.\" How is the man related to Rohan?",
+        "choices": [
+            "A) Uncle",
+            "B) Father",
+            "C) Brother",
+            "D) Cousin"
+        ],
+        "expected_answer": "A",
+        "explanation": "Mother's only sister is maternal aunt. Her husband is maternal uncle."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "P is the brother of Q. Q is the daughter of R. R is the wife of S. How is S related to P?",
+        "choices": [
+            "A) Father",
+            "B) Uncle",
+            "C) Brother",
+            "D) Grandfather"
+        ],
+        "expected_answer": "A",
+        "explanation": "Q is daughter of R and R is wife of S. So S is father of Q and also father of P."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "Introducing a girl, Meena said, \"She is the daughter of the only son of my mother.\" How is the girl related to Meena?",
+        "choices": [
+            "A) Sister",
+            "B) Daughter",
+            "C) Niece",
+            "D) Cousin"
+        ],
+        "expected_answer": "C",
+        "explanation": "The only son of Meena's mother is Meena's brother. His daughter is Meena's niece."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "A is the mother of B. B is the brother of C. C is the father of D. How is A related to D?",
+        "choices": [
+            "A) Grandmother",
+            "B) Mother",
+            "C) Aunt",
+            "D) Sister"
+        ],
+        "expected_answer": "A",
+        "explanation": "A is mother of C. C is father of D. So A is grandmother of D."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "X is the son of Y. Y is the sister of Z. Z is the father of W. How is W related to X?",
+        "choices": [
+            "A) Brother",
+            "B) Cousin",
+            "C) Uncle",
+            "D) Nephew"
+        ],
+        "expected_answer": "B",
+        "explanation": "Y and Z are siblings. X is child of Y and W is child of Z. Therefore X and W are cousins."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "M is the husband of N. N is the daughter of O. O has no sons. P is the brother of O. How is P related to M?",
+        "choices": [
+            "A) Father",
+            "B) Uncle-in-law",
+            "C) Brother",
+            "D) Cousin"
+        ],
+        "expected_answer": "B",
+        "explanation": "P is brother of O. N is daughter of O. M is husband of N. So P is uncle-in-law of M."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "A is the father of B. B is the sister of C. C has one daughter D. How is A related to D?",
+        "choices": [
+            "A) Grandfather",
+            "B) Uncle",
+            "C) Father",
+            "D) Brother"
+        ],
+        "expected_answer": "A",
+        "explanation": "A is father of C. C is parent of D. So A is grandfather of D."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "R is the sister of S. S is the father of T. How is R related to T?",
+        "choices": [
+            "A) Mother",
+            "B) Aunt",
+            "C) Grandmother",
+            "D) Cousin"
+        ],
+        "expected_answer": "B",
+        "explanation": "R is sister of T's father. Therefore R is aunt of T."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "K is the son of L. L is the daughter of M. M is the wife of N. How is N related to K?",
+        "choices": [
+            "A) Grandfather",
+            "B) Father",
+            "C) Uncle",
+            "D) Brother"
+        ],
+        "expected_answer": "A",
+        "explanation": "N is husband of M. M is parent of L. L is parent of K. Therefore N is grandfather of K."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "P is the mother of Q. Q is the brother of R. R is the wife of S. How is P related to S?",
+        "choices": [
+            "A) Mother-in-law",
+            "B) Aunt",
+            "C) Sister",
+            "D) Grandmother"
+        ],
+        "expected_answer": "A",
+        "explanation": "P is mother of R. R is wife of S. So P is mother-in-law of S."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "A is the brother of B. B is the mother of C. How is A related to C?",
+        "choices": [
+            "A) Father",
+            "B) Uncle",
+            "C) Brother",
+            "D) Grandfather"
+        ],
+        "expected_answer": "B",
+        "explanation": "A is brother of C's mother. So A is maternal uncle of C."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "D is the daughter of E. E is the son of F. F is the father of G. How is G related to D?",
+        "choices": [
+            "A) Uncle",
+            "B) Brother",
+            "C) Father",
+            "D) Cousin"
+        ],
+        "expected_answer": "A",
+        "explanation": "F is parent of both E and G. So G is sibling of E. E is parent of D. Therefore G is uncle of D."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "S is the wife of T. T is the son of U. U has two children T and V. How is V related to S?",
+        "choices": [
+            "A) Brother-in-law",
+            "B) Cousin",
+            "C) Father",
+            "D) Son"
+        ],
+        "expected_answer": "A",
+        "explanation": "V is sibling of T. S is wife of T. So V is brother-in-law of S."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "X is the father of Y. Y is the mother of Z. How is X related to Z?",
+        "choices": [
+            "A) Grandfather",
+            "B) Father",
+            "C) Uncle",
+            "D) Brother"
+        ],
+        "expected_answer": "A",
+        "explanation": "X is parent of Y and Y is parent of Z. Therefore X is grandfather of Z."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "L is the brother of M. M is the mother of N. How is L related to N?",
+        "choices": [
+            "A) Father",
+            "B) Uncle",
+            "C) Grandfather",
+            "D) Brother"
+        ],
+        "expected_answer": "B",
+        "explanation": "L is brother of N's mother. So L is uncle of N."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "A is the wife of B. C is the brother of B. D is the son of A. How is C related to D?",
+        "choices": [
+            "A) Uncle",
+            "B) Father",
+            "C) Cousin",
+            "D) Brother"
+        ],
+        "expected_answer": "A",
+        "explanation": "C is brother of D's father. So C is uncle of D."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "R is the daughter of S. S is the daughter of T. How is T related to R?",
+        "choices": [
+            "A) Mother",
+            "B) Grandmother",
+            "C) Aunt",
+            "D) Sister"
+        ],
+        "expected_answer": "B",
+        "explanation": "T is parent of S and grandparent of R."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "M is the father of N. N is the brother of O. O has one daughter P. How is M related to P?",
+        "choices": [
+            "A) Grandfather",
+            "B) Father",
+            "C) Uncle",
+            "D) Cousin"
+        ],
+        "expected_answer": "A",
+        "explanation": "M is father of O. O is parent of P. So M is grandfather of P."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "A is the mother of B. B is the father of C. C is the sister of D. How is A related to D?",
+        "choices": [
+            "A) Grandmother",
+            "B) Mother",
+            "C) Aunt",
+            "D) Sister"
+        ],
+        "expected_answer": "A",
+        "explanation": "A is mother of B. B is parent of D. So A is grandmother of D."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "P is the sister of Q. Q is the father of R. How is P related to R?",
+        "choices": [
+            "A) Aunt",
+            "B) Mother",
+            "C) Cousin",
+            "D) Sister"
+        ],
+        "expected_answer": "A",
+        "explanation": "P is sister of R's father. So P is aunt of R."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "X is the husband of Y. Y is the daughter of Z. Z is the mother of W. How is W related to X?",
+        "choices": [
+            "A) Mother-in-law",
+            "B) Sister-in-law",
+            "C) Aunt",
+            "D) Daughter"
+        ],
+        "expected_answer": "B",
+        "explanation": "W is sibling of Y. X is husband of Y. So W is sister-in-law of X."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "A is the son of B. B is the sister of C. How is C related to A?",
+        "choices": [
+            "A) Uncle",
+            "B) Father",
+            "C) Cousin",
+            "D) Brother"
+        ],
+        "expected_answer": "A",
+        "explanation": "C is sibling of A's mother. So C is uncle of A."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "M is the mother of N. N is the wife of O. How is M related to O?",
+        "choices": [
+            "A) Mother-in-law",
+            "B) Aunt",
+            "C) Sister",
+            "D) Grandmother"
+        ],
+        "expected_answer": "A",
+        "explanation": "M is mother of O's wife. So M is mother-in-law of O."
+    },
+    {
+        "topic": "Family tree logic",
+        "question": "T is the father of U. U is the brother of V. V is the mother of W. How is T related to W?",
+        "choices": [
+            "A) Grandfather",
+            "B) Father",
+            "C) Uncle",
+            "D) Cousin"
+        ],
+        "expected_answer": "A",
+        "explanation": "T is father of V. V is mother of W. So T is grandfather of W."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term in the series: A1C, C3F, F6J, J10O, ?",
+        "choices": [
+            "A) O15U",
+            "B) O14T",
+            "C) P15U",
+            "D) O16V"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letters increase by +2,+3,+4,+5 pattern; numbers increase by +2,+3,+4,+5. So O15U."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: Z1X, Y4V, X9T, W16R, ?",
+        "choices": [
+            "A) V25P",
+            "B) V24Q",
+            "C) U25P",
+            "D) V36P"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letter decreasing by 1, number squares (1,4,9,16,25), last letter decreasing by 2."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: B2E, D4I, G7P, K11Z, ?",
+        "choices": [
+            "A) P16O",
+            "B) P15O",
+            "C) Q16P",
+            "D) O16N"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter jumps +2,+3,+4,+5; numbers +2,+3,+4,+5; final letter cumulative shifts accordingly."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: M1N, O2Q, R3U, V4Z, ?",
+        "choices": [
+            "A) A5F",
+            "B) A5E",
+            "C) B5F",
+            "D) Z5F"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letters +2,+3,+4,+5 cyclic; last letters +3,+4,+5,+6."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: A3D, C5H, F8N, J12V, ?",
+        "choices": [
+            "A) O17G",
+            "B) O17F",
+            "C) P17H",
+            "D) O16G"
+        ],
+        "expected_answer": "A",
+        "explanation": "Numbers increase +2,+3,+4,+5; letters follow similar growing gaps."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: Q2S, T4X, X6D, C8L, ?",
+        "choices": [
+            "A) H10U",
+            "B) I10U",
+            "C) H9T",
+            "D) G10T"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letters shift +3,+4,+5,+6; numbers increase by +2."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: E1F, H2J, L3O, Q4U, ?",
+        "choices": [
+            "A) W5B",
+            "B) V5A",
+            "C) W6B",
+            "D) X5C"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letters +3,+4,+5,+6; last letters +4,+5,+6,+7."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: A2Z, B4X, C6V, D8T, ?",
+        "choices": [
+            "A) E10R",
+            "B) F10R",
+            "C) E12R",
+            "D) E10S"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letter +1; number +2; last letter -2."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: C1A, F2D, J3H, O4M, ?",
+        "choices": [
+            "A) U5S",
+            "B) T5R",
+            "C) U6S",
+            "D) V5T"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter increments +3,+4,+5,+6; trailing letters match gap growth."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: Z5A, X6C, U7F, Q8J, ?",
+        "choices": [
+            "A) L9O",
+            "B) M9O",
+            "C) L10P",
+            "D) K9N"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letter -2,-3,-4,-5; number +1; last letter +2,+3,+4,+5."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: D2F, H4L, M6S, S8A, ?",
+        "choices": [
+            "A) Z10K",
+            "B) Y10J",
+            "C) Z9J",
+            "D) A10K"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter jumps increasing +4,+5,+6,+7; number +2."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: B3E, E6J, I9R, N12C, ?",
+        "choices": [
+            "A) T15P",
+            "B) S15P",
+            "C) T14O",
+            "D) U15Q"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letters increase +3,+4,+5,+6; numbers +3."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: A1B, C2E, F3I, J4N, ?",
+        "choices": [
+            "A) O5T",
+            "B) P5T",
+            "C) O6U",
+            "D) P6U"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letters +2,+3,+4,+5; last letters +3,+4,+5,+6."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: Y2X, W4U, T6Q, P8L, ?",
+        "choices": [
+            "A) K10F",
+            "B) L10F",
+            "C) K9E",
+            "D) J10E"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letters -2,-3,-4,-5; numbers +2; last letters -3,-4,-5,-6."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: F5K, J6P, O7V, U8C, ?",
+        "choices": [
+            "A) B9L",
+            "B) C9L",
+            "C) B10M",
+            "D) A9K"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter increments growing by +4,+5,+6,+7 cyclic; number +1."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: A4C, D5H, H6N, M7U, ?",
+        "choices": [
+            "A) S8C",
+            "B) T8D",
+            "C) S9C",
+            "D) R8B"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter jumps +3,+4,+5,+6; number +1."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: P1Q, R3T, U6X, Y10C, ?",
+        "choices": [
+            "A) D15I",
+            "B) C15H",
+            "C) D14I",
+            "D) E15J"
+        ],
+        "expected_answer": "A",
+        "explanation": "Numbers follow +2,+3,+4,+5; letters follow expanding shifts."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: L2N, O4S, S6Y, X8F, ?",
+        "choices": [
+            "A) E10O",
+            "B) D10N",
+            "C) F10P",
+            "D) E9O"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letters increase +3,+4,+5,+6 cyclic; numbers +2."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: A2C, D4G, H6L, M8R, ?",
+        "choices": [
+            "A) S10Y",
+            "B) T10Z",
+            "C) S9Y",
+            "D) R10X"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter gaps increase sequentially; numbers +2."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: G1H, I2K, L3O, P4T, ?",
+        "choices": [
+            "A) U5Z",
+            "B) V5A",
+            "C) U6Z",
+            "D) T5Y"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter increments +2,+3,+4,+5; number +1."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: X3Z, U6Y, Q9W, L12T, ?",
+        "choices": [
+            "A) F15P",
+            "B) G15Q",
+            "C) F14P",
+            "D) E15O"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letter -3,-4,-5,-6; number +3; last letter -1,-2,-3,-4."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: C4F, G8L, L12S, R16A, ?",
+        "choices": [
+            "A) Y20K",
+            "B) Z20L",
+            "C) Y21K",
+            "D) X20J"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letters jump increasing pattern; numbers +4."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: A5E, F6K, L7R, S8Z, ?",
+        "choices": [
+            "A) A9I",
+            "B) B9J",
+            "C) A10I",
+            "D) Z9H"
+        ],
+        "expected_answer": "A",
+        "explanation": "Letter shifts expand cyclically; number +1."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the next term: H2J, K4O, O6U, T8B, ?",
+        "choices": [
+            "A) Z10K",
+            "B) A10L",
+            "C) Y10J",
+            "D) Z9K"
+        ],
+        "expected_answer": "A",
+        "explanation": "First letter +3,+4,+5,+6; numbers +2."
+    },
+    {
+        "topic": "Mixed Series (Alphanumeric)",
+        "question": "Find the missing term: B1C, D3F, G6J, K10O, ?",
+        "choices": [
+            "A) P15U",
+            "B) O15T",
+            "C) P14U",
+            "D) Q15V"
+        ],
+        "expected_answer": "A",
+        "explanation": "Numbers follow +2,+3,+4,+5; letters follow increasing shift."
+    }    
+]
