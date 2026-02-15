@@ -1,0 +1,11 @@
+.cache/
+.dockerignore
+.ipynb_checkpoints/
+temp/
+hf_models/
+git.sh
+outputs/
+utils/
+assets/
+__pycache__/
+*.safetensors
