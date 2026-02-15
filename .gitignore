@@ -2,9 +2,9 @@
 .dockerignore
 .ipynb_checkpoints/
 temp/
+outputs/
 hf_models/
 git.sh
-outputs/
 utils/
 __pycache__/
 *.safetensors

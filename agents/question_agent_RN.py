@@ -18,15 +18,6 @@ class QuestioningAgent(object):
     def __init__(self, **kwargs):
         self.agent = QAgent(**kwargs)
 
-    # =========================
-    # ✅ Utilities (VALIDATION + DEDUPE)
-    # =========================
-    def _norm(self, s: str) -> str:
-        s = "" if s is None else str(s)
-        s = s.replace("\n", " ").replace("\r", " ").replace("\t", " ")
-        s = re.sub(r"\s+", " ", s).strip().lower()
-        return s
-
     def _strip_choice_prefix(self, s: str) -> str:
         s = "" if s is None else str(s)
         return re.sub(r"^[A-Da-d]\)\s*", "", s).strip()
@@ -35,8 +26,17 @@ class QuestioningAgent(object):
         ans = str(q.get("answer", "")).strip().upper()
         return ans in {"A", "B", "C", "D"}
 
+    def _norm(self, s: str) -> str:
+        s = "" if s is None else str(s)
+        s = s.replace("\n", " ").replace("\r", " ").replace("\t", " ")
+        s = re.sub(r"\s+", " ", s).strip().lower()
+        return s
+
     def _signature(self, q: Dict[str, Any]) -> str:
-        # signature based on topic + question + choices (answer/explanation excluded)
+        """
+        Dedupe signature based on topic + question + choices (ignores answer/explanation).
+        Choice prefixes like 'A) ' are stripped so duplicates match correctly.
+        """
         topic = self._norm(q.get("topic", ""))
         question = self._norm(q.get("question", ""))
         choices = q.get("choices", [])
@@ -46,23 +46,6 @@ class QuestioningAgent(object):
         for c in choices:
             ch_norm.append(self._norm(self._strip_choice_prefix(c)))
         return topic + "||" + question + "||" + "||".join(ch_norm)
-
-    def _dedupe_keep_first(self, items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """
-        De-dupe by signature (topic+question+choices).
-        Keeps the first valid instance and removes the rest.
-        This prevents filtered_questions from becoming empty when the model produces conflicts.
-        """
-        seen = set()
-        out = []
-        for it in items:
-            sig = self._signature(it)
-            if sig in seen:
-                continue
-            seen.add(sig)
-            out.append(it)
-        return out
-
 
     def _extract_first_json_object(self, s: str) -> Dict[str, Any] | None:
         """
@@ -86,9 +69,6 @@ class QuestioningAgent(object):
         except Exception:
             return None
 
-    # =========================
-    # ICL builder
-    # =========================
     def build_inc_samples(self, inc_samples: List[Dict[str, str]], topic: str) -> str:
         r"""
         Build a string of example questions from the provided samples.
@@ -111,14 +91,13 @@ class QuestioningAgent(object):
             question = sample.get("question", "")
             choices = sample.get("choices", [""] * 4)
 
-            # ✅ Prevent "A) A) X" if samples already include prefixes
+            # Prevent "A) A) X" if samples already include prefixes
             cleaned_choices = []
             for c in choices:
                 cleaned_choices.append(self._strip_choice_prefix(c))
             while len(cleaned_choices) < 4:
                 cleaned_choices.append("")
 
-            # ✅ Accept expected_answer from sample sets too
             answer = sample.get("answer", sample.get("expected_answer", ""))
             explanation = sample.get("explanation", "")
             sample_str += (
@@ -129,9 +108,6 @@ class QuestioningAgent(object):
             )
         return sample_str.strip()
 
-    # =========================
-    # ✅ PROMPT (updated)
-    # =========================
     def build_prompt(
         self,
         topic: str,
@@ -141,7 +117,6 @@ class QuestioningAgent(object):
     ) -> Tuple[str, str]:
         """Generate an MCQ based question on given topic with specified difficulty"""
 
-        # ✅ Prompt change only (keeping structure)
         if wadvsys:
             sys_prompt = (
                 "You are an expert-level examiner for Quantitative Aptitude and Analytical Reasoning.\n"
@@ -152,6 +127,7 @@ class QuestioningAgent(object):
                 "The 'answer' value MUST be exactly one of: A, B, C, D (never empty).\n"
                 "If uncertain, still choose one option letter and ensure it matches the correct choice.\n"
                 "No extra text before or after the JSON.\n"
+                "Do NOT repeat any question from the examples or earlier outputs; always create a new one.\n"
             )
         else:
             sys_prompt = (
@@ -162,6 +138,7 @@ class QuestioningAgent(object):
                 "All keys must be present: topic, question, choices, answer, explanation.\n"
                 "The 'answer' value MUST be exactly one of: A, B, C, D (never empty).\n"
                 "No extra text before or after the JSON.\n"
+                "Do NOT repeat any question from the examples or earlier outputs; always create a new one.\n"
             )
 
         tmpl = (
@@ -169,25 +146,20 @@ class QuestioningAgent(object):
             "**HARD CONSTRAINTS (MUST FOLLOW):**\n"
             "1) Output ONLY a single valid JSON object (no markdown, no extra text).\n"
             "2) English ONLY. No newline characters anywhere.\n"
-            "3) topic <= 4 words.\n"
-            "4) question <= 30 words and ends with '?'.\n"
-            "5) choices: exactly four strings, each <= 10 words, formatted as A) ... B) ... C) ... D) ...\n"
+            "3) topic <= 4 words (keep short if possible).\n"
+            "4) question should be as short as possible and ends with '?'.\n"
+            "5) choices: exactly four strings, formatted as A) ... B) ... C) ... D) ...\n"
             "6) Exactly ONE correct answer; 'answer' MUST be ONLY one of A/B/C/D and MUST NOT be empty. Set it to {2}.\n"
             "6.1) The correct choice text MUST match the answer letter. If mismatch occurs, fix answer letter.\n"
-            "7) Token budget: total tokens for [topic+question+choices+answer] must be <= 150.\n"
-            "8) explanation <= 100 words (keep concise).\n"
-            "9) HARD LENGTH BUDGET: Keep core extremely short.\n"
-            "- topic: 1–3 words\n"
-            "- question: <= 18 words (single sentence)\n"
-            "- each choice: <= 6 words\n"
-            "- answer: single letter\n"
-            "If you cannot do this, simplify the question until you can.\n\n"
+            "7) Try to keep [topic+question+choices+answer] under 150 tokens if possible, but correctness is priority.\n"
+            "8) explanation should be concise.\n"
+            "9) ABSOLUTELY NO DUPLICATES: do not reuse any question pattern, statement set, or arrangement from the examples.\n\n"
             "**QUALITY RULES:**\n"
             "- Fully specified (no missing info).\n"
             "- No contradictions.\n"
             "- Plausible distractors.\n\n"
             "{5}"
-            "FINAL CHECK (silent): Verify 'answer' is one of A/B/C/D and choices contain exactly one correct option. Output JSON only.\n"
+            "FINAL CHECK (silent): Verify 'answer' is one of A/B/C/D and output JSON only.\n"
             "RESPONSE FORMAT: Strictly output JSON exactly like:\n"
             "{{\n"
             '  "topic": "{7}",\n'
@@ -198,9 +170,7 @@ class QuestioningAgent(object):
             "}}"
         )
 
-        # Remove preferential bias for options
         correct_option = random.choice(["A", "B", "C", "D"])
-        distractors = ", ".join([opt for opt in ["A", "B", "C", "D"] if opt != correct_option])
 
         if wicl:
             inc_samples_ex = self.build_inc_samples(inc_samples, topic)
@@ -211,7 +181,7 @@ class QuestioningAgent(object):
             topic,
             topic,
             correct_option,
-            distractors,
+            "",
             correct_option,
             inc_samples_ex,
             topic,
@@ -297,27 +267,23 @@ class QuestioningAgent(object):
             raise AttributeError("The agent does not have a tokenizer attribute.")
         return len(self.agent.tokenizer.encode(text, add_special_tokens=False))
 
-    # =========================
-    # ✅ VALIDATION + FILTER + DEDUPE
-    # =========================
+    # ✅ FILTER: NO token filtering, BUT DEDUPE KEEP FIRST
     def filter_questions(self, questions: List[str | Dict[str, Any]]) -> List[Dict[str, Any]]:
         def basic_checks(q2: Dict[str, Any]) -> bool:
             # normalize expected_answer -> answer
             if "answer" not in q2 and "expected_answer" in q2:
                 q2["answer"] = q2["expected_answer"]
-    
+
             required_keys = ["topic", "question", "choices", "answer"]
             if not all((key in q2) for key in required_keys):
                 return False
-    
+
             if not isinstance(q2["choices"], list) or len(q2["choices"]) != 4:
                 return False
-    
-            # answer must be valid A/B/C/D
+
             if not self._has_valid_answer(q2):
                 return False
-    
-            # choices must start with A/B/C/D
+
             checks = all(
                 isinstance(choice, str)
                 and len(choice) > 2
@@ -326,22 +292,13 @@ class QuestioningAgent(object):
             )
             if not checks:
                 return False
-    
-            # ✅ DO NOT reject by 150-token core budget (your outputs are longer)
-            # Keep only total length sanity if you want:
-            expl = str(q2.get("explanation", ""))
-            total_tokens = self.count_tokens_q(
-                str(q2.get("topic", "")) + " " +
-                str(q2.get("question", "")) + " " +
-                " ".join([str(c) for c in q2.get("choices", [])]) + " " +
-                str(q2.get("answer", "")) + " " +
-                expl
-            )
-            if total_tokens > 1024:
+
+            qtext = str(q2.get("question", "")).strip()
+            if not qtext or "?" not in qtext:
                 return False
-    
+
             return True
-    
+
         parsed: List[Dict[str, Any]] = []
         for q in questions:
             if isinstance(q, dict):
@@ -356,15 +313,18 @@ class QuestioningAgent(object):
                     q2 = self._extract_first_json_object(q)
                     if q2 is not None and basic_checks(q2):
                         parsed.append(q2)
-    
-        # ✅ de-dupe: keep first occurrence
-        deduped = self._dedupe_keep_first(parsed)
-    
-        # keep your old threshold behavior
-        if len(deduped) >= 0.5 * max(1, len(questions)):
-            return deduped
-        return []
 
+        # ✅ DEDUPE KEEP FIRST
+        seen = set()
+        deduped: List[Dict[str, Any]] = []
+        for it in parsed:
+            sig = self._signature(it)
+            if sig in seen:
+                continue
+            seen.add(sig)
+            deduped.append(it)
+
+        return deduped
 
     def save_questions(self, questions: Any, file_path: str | Path) -> None:
         file_path = Path(file_path)
@@ -439,11 +399,10 @@ if __name__ == "__main__":
             )
         print("\n" + "+" * 50 + "\n")
 
-    # ✅ Build clean questions list (dicts only) and drop missing-answer outputs immediately
+    # Build clean questions list (dicts only); enforce answer presence at source
     ques: List[Dict[str, Any]] = []
     for q in question:
         obj = None
-
         if isinstance(q, dict):
             obj = q
         elif isinstance(q, str):
@@ -455,11 +414,9 @@ if __name__ == "__main__":
         if not isinstance(obj, dict):
             continue
 
-        # normalize expected_answer -> answer
         if "answer" not in obj and "expected_answer" in obj:
             obj["answer"] = obj["expected_answer"]
 
-        # ✅ enforce answer presence at source
         ans = str(obj.get("answer", "")).strip().upper()
         if ans not in {"A", "B", "C", "D"}:
             continue
