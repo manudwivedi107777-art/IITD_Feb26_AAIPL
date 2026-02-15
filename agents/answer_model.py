@@ -56,7 +56,7 @@ class AAgent(object):
         
         # 2) environment variable fallback
         if not adapter_path:
-            adapter_path = os.getenv("A_ADAPTER_PATH", "").strip()
+            adapter_path = os.getenv("A_ADAPTER_PATH", "outputs/aagent-lora").strip()
         
         # 3) default local path fallback
         if not adapter_path:
