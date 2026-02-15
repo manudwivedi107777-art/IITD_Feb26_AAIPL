@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# agents/question_model_RN.py
 
 import os
 import re
@@ -16,86 +15,16 @@ from peft import LoraConfig, get_peft_model
 from trl import SFTTrainer
 
 
-# ============================================================
-# Utility: Clean output for JSON safety
-# ============================================================
-
-def _clean_text_for_json(s: str) -> str:
-    """Light cleanup to reduce JSON breakage (keeps content, removes obvious wrappers)."""
+def _clean_text(s: str) -> str:
     if not isinstance(s, str):
         return ""
     s = s.strip()
-    # remove code fences
     s = s.replace("```json", "").replace("```", "").strip()
-    # remove think blocks (some models emit these even when disabled)
     s = re.sub(r"<think>[\s\S]*?</think>", "", s)
-    # normalize whitespace to single spaces
     s = s.replace("\n", " ").replace("\r", " ").replace("\t", " ")
     s = re.sub(r"\s{2,}", " ", s).strip()
     return s
 
-
-def _extract_first_json_object(s: str) -> Optional[str]:
-    """Extract the first {...} JSON object using brace matching."""
-    if not s:
-        return None
-    start = s.find("{")
-    if start == -1:
-        return None
-
-    depth = 0
-    for i in range(start, len(s)):
-        ch = s[i]
-        if ch == "{":
-            depth += 1
-        elif ch == "}":
-            depth -= 1
-            if depth == 0:
-                return s[start : i + 1]
-    return None
-
-
-def _validate_mcq_obj(obj: Dict[str, Any]) -> bool:
-    """Schema + basic sanity checks."""
-    required = ["topic", "question", "choices", "answer", "explanation"]
-    if not isinstance(obj, dict):
-        return False
-    if not all(k in obj for k in required):
-        return False
-
-    if not isinstance(obj["topic"], str) or not obj["topic"].strip():
-        return False
-    if not isinstance(obj["question"], str) or not obj["question"].strip():
-        return False
-    if not isinstance(obj["choices"], list) or len(obj["choices"]) != 4:
-        return False
-    if not all(isinstance(c, str) and c.strip() for c in obj["choices"]):
-        return False
-    if not isinstance(obj["answer"], str) or obj["answer"] not in ["A", "B", "C", "D"]:
-        return False
-    if not isinstance(obj["explanation"], str) or not obj["explanation"].strip():
-        return False
-    return True
-
-
-def _build_fix_prompt(bad_text: str) -> str:
-    return (
-        "Fix the following into ONE valid minified JSON object ONLY (no extra text, no markdown).\n"
-        "Schema:\n"
-        "{\"topic\":\"...\",\"question\":\"...\",\"choices\":[\"A) ...\",\"B) ...\",\"C) ...\",\"D) ...\"],"
-        "\"answer\":\"A|B|C|D\",\"explanation\":\"...\"}\n"
-        "Rules:\n"
-        "- Output ONLY JSON\n"
-        "- English only\n"
-        "- No newline characters\n"
-        "- Exactly one correct answer\n"
-        f"BAD_OUTPUT: {bad_text}"
-    )
-
-
-# ============================================================
-# QAgent
-# ============================================================
 
 class QAgent(object):
     def __init__(self, **kwargs):
@@ -117,16 +46,18 @@ class QAgent(object):
             device_map="auto",
         )
 
-        adapter_path = os.getenv("Q_ADAPTER_PATH", "").strip()
-        if adapter_path:
+        # Auto-load adapter (env var first, else default path)
+        adapter_path = os.getenv("Q_ADAPTER_PATH", "outputs/qwen14b-qagent-lora").strip()
+        default_adapter = Path("outputs/qwen14b-qagent-lora")
+
+        if not adapter_path and default_adapter.exists():
+            adapter_path = str(default_adapter)
+
+        if adapter_path and Path(adapter_path).exists():
             from peft import PeftModel
             self.model = PeftModel.from_pretrained(self.model, adapter_path)
 
         self.model.eval()
-
-    # ============================================================
-    # Inference
-    # ============================================================
 
     def generate_response(
         self,
@@ -134,19 +65,11 @@ class QAgent(object):
         system_prompt: Optional[str] = None,
         **kwargs,
     ):
-        """
-        Returns:
-          - if tgps_show=True: (resp, token_len, gen_time)
-          - else: resp
-        resp:
-          - dict for single prompt when JSON parses + validates
-          - list of dicts for multi prompt when JSON parses + validates
-          - if parsing fails even after a retry, falls back to cleaned string(s)
-        """
         if system_prompt is None:
             system_prompt = "You are a helpful assistant."
 
         tgps_show = bool(kwargs.get("tgps_show", False))
+
         is_single = isinstance(message, str)
         messages = [message] if is_single else message
 
@@ -168,130 +91,60 @@ class QAgent(object):
             texts, return_tensors="pt", padding=True, truncation=True
         ).to(self.model.device)
 
-        gen_kwargs = dict(
-            max_new_tokens=kwargs.get("max_new_tokens", 1024),
+        # Keep max_new_tokens bounded to control latency.
+        max_new = int(kwargs.get("max_new_tokens", 256))
+        max_new = max(32, min(max_new, 1024))
+
+        generated_kwargs = dict(
+            max_new_tokens=max_new,
             pad_token_id=self.tokenizer.pad_token_id,
             eos_token_id=self.tokenizer.eos_token_id,
             do_sample=kwargs.get("do_sample", True),
-            temperature=kwargs.get("temperature", 0.45),
+            temperature=kwargs.get("temperature", 0.2),
             top_p=kwargs.get("top_p", 0.9),
-            repetition_penalty=kwargs.get("repetition_penalty", 1.12),
+            repetition_penalty=kwargs.get("repetition_penalty", 1.15),
         )
 
         start = time.time() if tgps_show else None
-        generated = self.model.generate(**model_inputs, **gen_kwargs)
+        generated = self.model.generate(**model_inputs, **generated_kwargs)
         gen_time = (time.time() - start) if tgps_show else None
 
-        outs: List[Union[Dict[str, Any], str]] = []
+        outs: List[str] = []
         token_len = 0
 
-        # 1) decode + clean + try parse/validate
         for in_ids, out_ids in zip(model_inputs.input_ids, generated):
-            new_tokens = out_ids[len(in_ids) :].tolist()
+            new_tokens = out_ids[len(in_ids):].tolist()
             if tgps_show:
                 token_len += len(new_tokens)
 
             decoded = self.tokenizer.decode(new_tokens, skip_special_tokens=True)
-            decoded = _clean_text_for_json(decoded)
-
-            json_str = _extract_first_json_object(decoded)
-            parsed: Optional[Dict[str, Any]] = None
-            if json_str:
-                try:
-                    parsed = json.loads(json_str)
-                except Exception:
-                    parsed = None
-
-            if parsed is not None and not _validate_mcq_obj(parsed):
-                parsed = None
-
-            outs.append(parsed if parsed is not None else decoded)
-
-        # 2) one retry pass for any failures (strings)
-        need_retry = [i for i, o in enumerate(outs) if isinstance(o, str)]
-        if need_retry:
-            retry_texts: List[str] = []
-            for i in need_retry:
-                fix_msg = _build_fix_prompt(str(outs[i]))
-                chat = [
-                    {"role": "system", "content": "You output ONLY JSON."},
-                    {"role": "user", "content": fix_msg},
-                ]
-                retry_texts.append(
-                    self.tokenizer.apply_chat_template(
-                        chat,
-                        tokenize=False,
-                        add_generation_prompt=True,
-                        enable_thinking=False,
-                    )
-                )
-
-            retry_inputs = self.tokenizer(
-                retry_texts, return_tensors="pt", padding=True, truncation=True
-            ).to(self.model.device)
-
-            retry_gen = self.model.generate(**retry_inputs, **gen_kwargs)
-
-            for local_idx, (in_ids, out_ids) in enumerate(
-                zip(retry_inputs.input_ids, retry_gen)
-            ):
-                new_tokens2 = out_ids[len(in_ids) :].tolist()
-                if tgps_show:
-                    token_len += len(new_tokens2)
-
-                decoded2 = self.tokenizer.decode(new_tokens2, skip_special_tokens=True)
-                decoded2 = _clean_text_for_json(decoded2)
-
-                json_str2 = _extract_first_json_object(decoded2)
-                parsed2: Optional[Dict[str, Any]] = None
-                if json_str2:
-                    try:
-                        parsed2 = json.loads(json_str2)
-                    except Exception:
-                        parsed2 = None
-
-                if parsed2 is not None and _validate_mcq_obj(parsed2):
-                    outs[need_retry[local_idx]] = parsed2
-                else:
-                    # keep cleaned string fallback
-                    outs[need_retry[local_idx]] = decoded2
+            outs.append(_clean_text(decoded))
 
         resp = outs[0] if is_single else outs
-
         if tgps_show:
             return resp, token_len, gen_time
-        return resp
+        return resp, None, None
 
-    # ============================================================
-    # Training (LoRA)
-    # ============================================================
-
-    def _build_prompt(self, topic: str) -> str:
+    def _build_user_prompt(self, topic: str) -> str:
         return (
-            f"Given topic: {topic}\n"
-            "Generate ONE puzzle-based MCQ strictly in this JSON format:\n"
-            "{"
-            "\"topic\":\"...\","
-            "\"question\":\"...\","
-            "\"choices\":[\"A) ...\",\"B) ...\",\"C) ...\",\"D) ...\"],"
-            "\"answer\":\"A|B|C|D\","
-            "\"explanation\":\"...\""
-            "}\n"
-            "Rules:\n"
-            "- Output ONLY JSON\n"
-            "- English only\n"
-            "- No newline characters\n"
-            "- Exactly one correct answer\n"
+            f"Topic: {topic}\n"
+            "Generate ONE high-quality puzzle-based MCQ strictly as JSON:\n"
+            "{\"topic\":\"...\",\"question\":\"...?\",\"choices\":[\"A) ...\",\"B) ...\",\"C) ...\",\"D) ...\"],"
+            "\"answer\":\"A|B|C|D\",\"explanation\":\"...\"}\n"
+            "Rules: English only, no newlines, exactly 4 choices, exactly one correct answer."
         )
 
     def _example_to_sft_text(self, ex: Dict[str, Any]) -> str:
         topic = str(ex.get("topic", "")).replace("\n", " ").strip()
         question = str(ex.get("question", "")).replace("\n", " ").strip()
         choices = [str(c).replace("\n", " ").strip() for c in ex.get("choices", [])]
-        answer = str(ex.get("answer", "")).strip()
+
+        # accept expected_answer also
+        answer = str(ex.get("answer", ex.get("expected_answer", ""))).strip()
+
         explanation = str(ex.get("explanation", "")).replace("\n", " ").strip()
 
-        user_prompt = self._build_prompt(topic)
+        user_prompt = self._build_user_prompt(topic)
 
         assistant_json = {
             "topic": topic,
@@ -300,17 +153,15 @@ class QAgent(object):
             "answer": answer,
             "explanation": explanation,
         }
-
         assistant_text = json.dumps(assistant_json, ensure_ascii=False)
 
-        messages = [
-            {"role": "system", "content": "You are a precise JSON generator."},
+        msgs = [
+            {"role": "system", "content": "You are a strict JSON generator. Output ONLY JSON. English only. No newlines."},
             {"role": "user", "content": user_prompt},
             {"role": "assistant", "content": assistant_text},
         ]
-
         return self.tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=False
+            msgs, tokenize=False, add_generation_prompt=False
         )
 
     def train_lora(
@@ -322,15 +173,17 @@ class QAgent(object):
         grad_accum: int = 8,
         lr: float = 2e-4,
     ):
-        # Load data
         with open(data_path, "r", encoding="utf-8") as f:
             rows = json.load(f)
 
-        # Build dataset (avoid heavy .map)
+        # normalize rows so 'expected_answer' becomes 'answer'
+        for ex in rows:
+            if isinstance(ex, dict) and ("answer" not in ex) and ("expected_answer" in ex):
+                ex["answer"] = ex["expected_answer"]
+
         texts = [self._example_to_sft_text(ex) for ex in rows]
         ds = Dataset.from_dict({"text": texts})
 
-        # Fresh model load for training
         model = AutoModelForCausalLM.from_pretrained(
             self.base_model_path,
             torch_dtype=torch.bfloat16,
@@ -338,7 +191,6 @@ class QAgent(object):
             trust_remote_code=True,
         )
 
-        # LoRA config
         lora_cfg = LoraConfig(
             r=16,
             lora_alpha=32,
@@ -350,7 +202,6 @@ class QAgent(object):
                 "up_proj", "down_proj", "gate_proj"
             ],
         )
-
         model = get_peft_model(model, lora_cfg)
 
         training_args = TrainingArguments(
@@ -372,18 +223,11 @@ class QAgent(object):
             train_dataset=ds,
             args=training_args,
         )
-
         trainer.train()
 
         trainer.model.save_pretrained(output_dir)
         self.tokenizer.save_pretrained(output_dir)
 
-        print(f"LoRA adapter saved to: {output_dir}")
-
-
-# ============================================================
-# CLI for training
-# ============================================================
 
 if __name__ == "__main__":
     import argparse
@@ -398,10 +242,8 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=2e-4)
     args = ap.parse_args()
 
-    agent = QAgent()
-
     if args.train:
-        agent.train_lora(
+        QAgent().train_lora(
             data_path=args.data,
             output_dir=args.out,
             epochs=args.epochs,

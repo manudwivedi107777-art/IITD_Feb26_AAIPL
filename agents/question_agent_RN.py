@@ -49,7 +49,7 @@ class QuestioningAgent(object):
 
     def _extract_first_json_object(self, s: str) -> Dict[str, Any] | None:
         """
-        Fast local extraction of first {...} JSON object (avoids calling LLM again).
+        Fast local extraction of first {...} JSON object.
         Fixes cases like: '{...} DXO' or extra tokens after JSON.
         """
         if not isinstance(s, str):
@@ -61,13 +61,45 @@ class QuestioningAgent(object):
         try:
             obj = json.loads(candidate)
             if isinstance(obj, dict):
-                # normalize expected_answer -> answer if present
                 if "answer" not in obj and "expected_answer" in obj:
                     obj["answer"] = obj["expected_answer"]
                 return obj
             return None
         except Exception:
             return None
+
+    # ---------------------------
+    # NEW: avoid-duplicate block
+    # ---------------------------
+    def build_avoid_block(self, prev: List[Dict[str, Any]], max_items: int = 6) -> str:
+        """
+        Compact 'do-not-repeat' list, kept short to avoid blowing token budget.
+        Uses only question + choices (no explanation) to reduce anchoring.
+        """
+        if not prev:
+            return ""
+
+        items = prev[-max_items:]
+        lines = []
+        for q in items:
+            ques = str(q.get("question", "")).strip()
+            choices = q.get("choices", [])
+            if not isinstance(choices, list):
+                choices = []
+            ch = [self._strip_choice_prefix(c) for c in choices[:4]]
+            ch_txt = " | ".join(ch)
+            if ques:
+                lines.append(f"- Q: {ques} || C: {ch_txt}")
+
+        if not lines:
+            return ""
+
+        return (
+            "\n**AVOID DUPLICATES (MUST):**\n"
+            "Do NOT generate any question that matches these in story, structure, constraints, or choices:\n"
+            + "\n".join(lines)
+            + "\n"
+        )
 
     def build_inc_samples(self, inc_samples: List[Dict[str, str]], topic: str) -> str:
         r"""
@@ -114,6 +146,7 @@ class QuestioningAgent(object):
         wadvsys: bool = True,
         wicl: bool = True,
         inc_samples: List[Dict[str, str]] | None = None,
+        avoid_samples: List[Dict[str, Any]] | None = None,
     ) -> Tuple[str, str]:
         """Generate an MCQ based question on given topic with specified difficulty"""
 
@@ -125,9 +158,10 @@ class QuestioningAgent(object):
                 "No newline characters anywhere.\n"
                 "All keys must be present: topic, question, choices, answer, explanation.\n"
                 "The 'answer' value MUST be exactly one of: A, B, C, D (never empty).\n"
-                "If uncertain, still choose one option letter and ensure it matches the correct choice.\n"
                 "No extra text before or after the JSON.\n"
-                "Do NOT repeat any question from the examples or earlier outputs; always create a new one.\n"
+                "CRITICAL: Never generate a question that is identical or structurally similar to any previous question.\n"
+                "Do NOT reuse the same pattern, same statement structure, same arrangement template, or same series pattern.\n"
+                "Each question must be completely new and logically distinct.\n"
             )
         else:
             sys_prompt = (
@@ -135,11 +169,15 @@ class QuestioningAgent(object):
                 "Output ONLY one valid JSON object.\n"
                 "English only.\n"
                 "No newline characters.\n"
-                "All keys must be present: topic, question, choices, answer, explanation.\n"
-                "The 'answer' value MUST be exactly one of: A, B, C, D (never empty).\n"
-                "No extra text before or after the JSON.\n"
-                "Do NOT repeat any question from the examples or earlier outputs; always create a new one.\n"
+                "All keys must be present.\n"
+                "Answer must be A, B, C, or D.\n"
+                "CRITICAL: Do not generate duplicate or structurally similar questions.\n"
             )
+
+        correct_option = random.choice(["A", "B", "C", "D"])
+
+        inc_samples_ex = self.build_inc_samples(inc_samples, topic) if wicl else ""
+        avoid_block = self.build_avoid_block(avoid_samples or [], max_items=6)
 
         tmpl = (
             "Generate an EXTREMELY DIFFICULT puzzle-based MCQ on topic: {0}.\n\n"
@@ -158,7 +196,8 @@ class QuestioningAgent(object):
             "- Fully specified (no missing info).\n"
             "- No contradictions.\n"
             "- Plausible distractors.\n\n"
-            "{5}"
+            "{5}\n"
+            "{10}\n"
             "FINAL CHECK (silent): Verify 'answer' is one of A/B/C/D and output JSON only.\n"
             "RESPONSE FORMAT: Strictly output JSON exactly like:\n"
             "{{\n"
@@ -169,13 +208,6 @@ class QuestioningAgent(object):
             '  "explanation": "Briefly justify why {9} is correct."\n'
             "}}"
         )
-
-        correct_option = random.choice(["A", "B", "C", "D"])
-
-        if wicl:
-            inc_samples_ex = self.build_inc_samples(inc_samples, topic)
-        else:
-            inc_samples_ex = ""
 
         prompt = tmpl.format(
             topic,
@@ -188,6 +220,7 @@ class QuestioningAgent(object):
             topic.split("/")[-1],
             correct_option,
             correct_option,
+            avoid_block,
         )
 
         return prompt, sys_prompt
@@ -198,22 +231,37 @@ class QuestioningAgent(object):
         wadvsys: bool,
         wicl: bool,
         inc_samples: Dict[str, List[Dict[str, str]]] | None,
+        avoid_by_subtopic: Dict[str, List[Dict[str, Any]]] | None = None,
         **gen_kwargs,
     ) -> Tuple[List[str], int | None, float | None]:
         """Generate a question prompt for the LLM"""
-        if isinstance(topic, list):
-            prompt = []
-            for t in topic:
-                p, sp = self.build_prompt(
-                    f"{t[0]}/{t[1]}", wadvsys, wicl, inc_samples[t[1]]
-                )
-                prompt.append(p)
-        else:
-            prompt, sp = self.build_prompt(
-                f"{topic[0]}/{topic[1]}", wadvsys, wicl, inc_samples[topic[1]]
-            )
+        avoid_by_subtopic = avoid_by_subtopic or {}
 
-        resp, tl, gt = self.agent.generate_response(prompt, sp, **gen_kwargs)
+        if isinstance(topic, list):
+            prompts = []
+            for t in topic:
+                sub = t[1]
+                avoid_samples = avoid_by_subtopic.get(sub, [])
+                p, sp = self.build_prompt(
+                    f"{t[0]}/{t[1]}",
+                    wadvsys,
+                    wicl,
+                    inc_samples[sub] if inc_samples else None,
+                    avoid_samples=avoid_samples,
+                )
+                prompts.append(p)
+            resp, tl, gt = self.agent.generate_response(prompts, sp, **gen_kwargs)
+        else:
+            sub = topic[1]
+            avoid_samples = avoid_by_subtopic.get(sub, [])
+            prompt, sp = self.build_prompt(
+                f"{topic[0]}/{topic[1]}",
+                wadvsys,
+                wicl,
+                inc_samples[sub] if inc_samples else None,
+                avoid_samples=avoid_samples,
+            )
+            resp, tl, gt = self.agent.generate_response(prompt, sp, **gen_kwargs)
 
         if (isinstance(resp, list) and all(isinstance(r, str) for r in resp)) or isinstance(resp, str):
             return resp, tl, gt
@@ -226,6 +274,27 @@ class QuestioningAgent(object):
                 gt,
             )
 
+    def _parse_question_obj(self, q: Any) -> Dict[str, Any] | None:
+        """
+        Parse a question that may be dict or JSON string; tolerate junk after JSON.
+        """
+        obj = None
+        if isinstance(q, dict):
+            obj = q
+        elif isinstance(q, str):
+            try:
+                obj = json.loads(q)
+            except Exception:
+                obj = self._extract_first_json_object(q)
+
+        if not isinstance(obj, dict):
+            return None
+
+        if "answer" not in obj and "expected_answer" in obj:
+            obj["answer"] = obj["expected_answer"]
+
+        return obj
+
     def generate_batches(
         self,
         num_questions: int,
@@ -237,27 +306,47 @@ class QuestioningAgent(object):
         **kwargs,
     ) -> Tuple[List[str], List[int | None], List[float | None]]:
         extended_topics = self.populate_topics(topics, num_questions)
-        questions = []
+
+        questions: List[str] = []
         tls, gts = [], []
+
+        # NEW: track prior generated questions per subtopic during this run
+        seen_by_subtopic: Dict[str, List[Dict[str, Any]]] = {}
 
         total_batches = (len(extended_topics) + batch_size - 1) // batch_size
         pbar = tqdm(total=total_batches, desc="STEPS: ")
 
         for i in range(0, len(extended_topics), batch_size):
-            batch_topics = extended_topics[i : i + batch_size]
-            batch_questions = self.generate_question(
-                batch_topics, wadvsys, wicl, inc_samples, **kwargs
+            batch_topics = extended_topics[i: i + batch_size]
+
+            batch_questions, tl, gt = self.generate_question(
+                batch_topics,
+                wadvsys,
+                wicl,
+                inc_samples,
+                avoid_by_subtopic=seen_by_subtopic,
+                **kwargs,
             )
-            questions.extend(batch_questions[0]), tls.append(batch_questions[1]), gts.append(batch_questions[2])
+
+            # store raw outputs
+            if isinstance(batch_questions, list):
+                questions.extend(batch_questions)
+            else:
+                questions.append(batch_questions)
+
+            tls.append(tl)
+            gts.append(gt)
             pbar.update(1)
 
-        if len(extended_topics) % batch_size != 0:
-            batch_topics = extended_topics[-(len(extended_topics) % batch_size) :]
-            batch_questions = self.generate_question(
-                batch_topics, wadvsys, wicl, inc_samples, **kwargs
-            )
-            questions.extend(batch_questions[0]), tls.append(batch_questions[1]), gts.append(batch_questions[2])
-            pbar.update(1)
+            # update seen_by_subtopic using parsed objects
+            for t, raw in zip(batch_topics, batch_questions if isinstance(batch_questions, list) else [batch_questions]):
+                sub = t[1]
+                obj = self._parse_question_obj(raw)
+                if not obj:
+                    continue
+                # only store if it looks valid-ish (avoid poisoning memory with garbage)
+                if "question" in obj and "choices" in obj and isinstance(obj.get("choices"), list):
+                    seen_by_subtopic.setdefault(sub, []).append(obj)
 
         pbar.close()
         return questions, tls, gts
@@ -267,10 +356,9 @@ class QuestioningAgent(object):
             raise AttributeError("The agent does not have a tokenizer attribute.")
         return len(self.agent.tokenizer.encode(text, add_special_tokens=False))
 
-    # ✅ FILTER: NO token filtering, BUT DEDUPE KEEP FIRST
+    # FILTER: parse + keep only valid + DEDUPE KEEP FIRST
     def filter_questions(self, questions: List[str | Dict[str, Any]]) -> List[Dict[str, Any]]:
         def basic_checks(q2: Dict[str, Any]) -> bool:
-            # normalize expected_answer -> answer
             if "answer" not in q2 and "expected_answer" in q2:
                 q2["answer"] = q2["expected_answer"]
 
@@ -314,7 +402,7 @@ class QuestioningAgent(object):
                     if q2 is not None and basic_checks(q2):
                         parsed.append(q2)
 
-        # ✅ DEDUPE KEEP FIRST
+        # DEDUPE KEEP FIRST
         seen = set()
         deduped: List[Dict[str, Any]] = []
         for it in parsed:
@@ -333,13 +421,23 @@ class QuestioningAgent(object):
             json.dump(questions, f, indent=4, ensure_ascii=False)
 
     def populate_topics(self, topics: Dict[str, List[str]], num_questions: int) -> List[str]:
+        """
+        Minimal-change improvement:
+        - sample WITHOUT replacement first (reduces repeated subtopics)
+        - if num_questions > unique subtopics, then fill the remainder with replacement
+        """
         if not isinstance(topics, dict):
             raise ValueError("Topics must be a dictionary with topic names as keys and lists of subtopics as values.")
         all_subtopics = [(t, st) for t, sublist in topics.items() for st in sublist]
         if not all_subtopics:
             raise ValueError("No subtopics found in the provided topics dictionary.")
-        selected_topics = random.choices(all_subtopics, k=num_questions)
-        return selected_topics
+
+        if num_questions <= len(all_subtopics):
+            return random.sample(all_subtopics, k=num_questions)
+
+        out = random.sample(all_subtopics, k=len(all_subtopics))
+        out += random.choices(all_subtopics, k=num_questions - len(all_subtopics))
+        return out
 
     @staticmethod
     def load_icl_samples(file_path: str | Path) -> Dict[str, List[Dict[str, str]]]:
@@ -393,29 +491,21 @@ if __name__ == "__main__":
         if gen_kwargs.get("tgps_show", False):
             print("Time taken per batch generation:", gts)
             print("Tokens generated per batch:", tls)
-            print(
-                f"Total Time Taken: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; "
-                f"TGPS: {sum(tls)/sum(gts):.3f} tokens/sec\n\n"
-            )
+            safe_gts = [x for x in gts if isinstance(x, (int, float)) and x > 0]
+            safe_tls = [x for x in tls if isinstance(x, int)]
+            if safe_gts and safe_tls:
+                print(
+                    f"Total Time Taken: {sum(safe_gts):.3f} seconds; Total Tokens: {sum(safe_tls)}; "
+                    f"TGPS: {sum(safe_tls)/sum(safe_gts):.3f} tokens/sec\n\n"
+                )
         print("\n" + "+" * 50 + "\n")
 
-    # Build clean questions list (dicts only); enforce answer presence at source
+    # Build clean questions list (dicts only)
     ques: List[Dict[str, Any]] = []
     for q in question:
-        obj = None
-        if isinstance(q, dict):
-            obj = q
-        elif isinstance(q, str):
-            try:
-                obj = json.loads(q)
-            except Exception:
-                obj = agent._extract_first_json_object(q)
-
+        obj = agent._parse_question_obj(q)
         if not isinstance(obj, dict):
             continue
-
-        if "answer" not in obj and "expected_answer" in obj:
-            obj["answer"] = obj["expected_answer"]
 
         ans = str(obj.get("answer", "")).strip().upper()
         if ans not in {"A", "B", "C", "D"}:

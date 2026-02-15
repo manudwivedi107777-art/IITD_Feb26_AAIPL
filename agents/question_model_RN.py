@@ -47,7 +47,7 @@ class QAgent(object):
         )
 
         # Auto-load adapter (env var first, else default path)
-        adapter_path = os.getenv("Q_ADAPTER_PATH", "outputs/qwen14b-qagent-lora").strip()
+        adapter_path = os.getenv("Q_ADAPTER_PATH", "outputs/qwen14b-qagent-sft").strip()
         default_adapter = Path("outputs/qwen14b-qagent-lora")
 
         if not adapter_path and default_adapter.exists():
@@ -91,8 +91,9 @@ class QAgent(object):
             texts, return_tensors="pt", padding=True, truncation=True
         ).to(self.model.device)
 
-        max_new = int(kwargs.get("max_new_tokens", 1024))
-        max_new = min(max_new, 1024)
+        # Keep max_new_tokens bounded to control latency.
+        max_new = int(kwargs.get("max_new_tokens", 256))
+        max_new = max(32, min(max_new, 1024))
 
         generated_kwargs = dict(
             max_new_tokens=max_new,
@@ -112,7 +113,7 @@ class QAgent(object):
         token_len = 0
 
         for in_ids, out_ids in zip(model_inputs.input_ids, generated):
-            new_tokens = out_ids[len(in_ids) :].tolist()
+            new_tokens = out_ids[len(in_ids):].tolist()
             if tgps_show:
                 token_len += len(new_tokens)
 
@@ -128,7 +129,8 @@ class QAgent(object):
         return (
             f"Topic: {topic}\n"
             "Generate ONE high-quality puzzle-based MCQ strictly as JSON:\n"
-            "{\"topic\":\"...\",\"question\":\"...?\",\"choices\":[\"A) ...\",\"B) ...\",\"C) ...\",\"D) ...\"],\"answer\":\"A|B|C|D\",\"explanation\":\"...\"}\n"
+            "{\"topic\":\"...\",\"question\":\"...?\",\"choices\":[\"A) ...\",\"B) ...\",\"C) ...\",\"D) ...\"],"
+            "\"answer\":\"A|B|C|D\",\"explanation\":\"...\"}\n"
             "Rules: English only, no newlines, exactly 4 choices, exactly one correct answer."
         )
 
@@ -137,7 +139,7 @@ class QAgent(object):
         question = str(ex.get("question", "")).replace("\n", " ").strip()
         choices = [str(c).replace("\n", " ").strip() for c in ex.get("choices", [])]
 
-        # ✅ FIX: accept expected_answer also (so training never sees empty answer)
+        # accept expected_answer also
         answer = str(ex.get("answer", ex.get("expected_answer", ""))).strip()
 
         explanation = str(ex.get("explanation", "")).replace("\n", " ").strip()
@@ -174,7 +176,7 @@ class QAgent(object):
         with open(data_path, "r", encoding="utf-8") as f:
             rows = json.load(f)
 
-        # ✅ FIX: normalize rows so 'expected_answer' becomes 'answer' (training-safe)
+        # normalize rows so 'expected_answer' becomes 'answer'
         for ex in rows:
             if isinstance(ex, dict) and ("answer" not in ex) and ("expected_answer" in ex):
                 ex["answer"] = ex["expected_answer"]

@@ -1,74 +1,155 @@
 #!/usr/bin/python3
 
-import re
-import json
-
-from pathlib import Path
 from tqdm import tqdm
+from pathlib import Path
 from typing import List, Tuple, Dict, Any
 
-from .answer_model import AAgent
-# from .answer_model_llama import AAgent
+from .question_model import QAgent 
+# from .question_model_llama import QAgent
 
-class AnsweringAgent(object):
-    r"""Agent responsible for answering MCQ questions with confidence scoring"""
+import random
+import json
 
-    def __init__(self, select_prompt1: bool = True, **kwargs):
-        self.agent = AAgent(**kwargs)
-        self.select_prompt1 = select_prompt1
 
-    def build_prompt(self, question_data: Dict[str, str | Any]) -> Tuple[str, str]:
-        """Generate an answer to the given MCQ question with confidence and reasoning"""
+class QuestioningAgent(object):
+    r"""Agent responsible for generating questions"""
 
-        sys_prompt1 = "You are an expert in quantitative aptitude for competitive exams, solving MCQs with step-by-step reasoning before selecting the correct answer."
-        sys_prompt2 = (
-            "You are an expert answer agent specializing in solving multiple-choice questions (MCQs) that test "
-            "quantitative aptitude skills, as seen in top-tier competitive exams. "
-            "You have a deep understanding of logical reasoning, puzzles, and analytical problem-solving under exam conditions. "
-            "For each question, think step by step using a clear chain-of-thought approach. "
-            "Break down the problem, analyze all options, eliminate distractors, and then confidently select the correct answer. "
-            "Always explain your reasoning before finalizing your choice."
-        )
+    def __init__(self, **kwargs):
+        self.agent = QAgent(**kwargs)
 
-        tmpl = (
-            "INSTRUCTIONS FOR ANSWERING:\n"
-            "1. Carefully read and understand what is being asked.\n"
-            "2. Consider why each choice might be correct or incorrect.\n"
-            "3. There is only **ONE OPTION** correct.\n"
-            "4. Provide reasoning within 100 words\n\n"
-            "Now answer the following question:\n"
-            "Question: {}\n"
-            "Choices: {}\n\n"
-            "RESPONSE FORMAT: Strictly generate a valid JSON object as shown below:\n"
+    def build_inc_samples(self, inc_samples: List[Dict[str, str]], topic: str) -> str:
+        r"""
+        Build a string of example questions from the provided samples.
+        """
+        if not inc_samples:
+            return ""
+        fmt = (
+            "EXAMPLE: {}\n"
             "{{\n"
-            '    "answer": "One of the letter from [A, B, C, D]",\n'
-            '    "reasoning": "Brief explanation within 100 words"\n'
+            '  "topic": "{}",\n'
+            '  "question": "{}",\n'
+            '  "choices": ["A) {}", "B) {}", "C) {}", "D) {}"],\n'
+            '  "answer": "{}",\n'
+            '  "explanation": "{}"\n'
             "}}"
         )
 
-        prompt = tmpl.format(
-            question_data["question"], self._format_choices(question_data["choices"])
+        sample_str = ""
+        for sample in inc_samples:
+            question = sample.get("question", "")
+            choices = sample.get("choices", [""] * 4)
+            answer = sample.get("answer", "")
+            explanation = sample.get("explanation", "")
+            sample_str += (
+                fmt.format(
+                    topic, topic.split("/")[-1], question, *choices, answer, explanation
+                )
+                + "\n\n"
+            )
+        return sample_str.strip()
+
+    def build_prompt(
+        self,
+        topic: str,
+        wadvsys: bool = True,
+        wicl: bool = True,
+        inc_samples: List[Dict[str, str]] | None = None,
+    ) -> Tuple[str, str]:
+        """Generate an MCQ based question on given topic with specified difficulty"""
+
+        if wadvsys:
+            sys_prompt = (
+                "You are an expert-level examiner for Quantitative Aptitude and Analytical Reasoning.\n"
+                "Think step-by-step internally, but output ONLY the final JSON.\n"
+                "DO NOT reveal reasoning steps.\n"
+                "English ONLY.\n"
+                "No newline characters anywhere.\n"
+                "Output must be exactly one valid JSON object.\n"
+                "Exactly one correct answer.\n"
+            )
+        else:
+            sys_prompt = (
+                "You are an examiner.\n"
+                "Output ONLY one valid JSON object.\n"
+                "English only.\n"
+                "No newline characters.\n"
+                "Exactly one correct answer.\n"
+            )
+
+        tmpl = (
+            "Generate an EXTREMELY DIFFICULT puzzle-based MCQ on topic: {0}.\n\n"
+            "**HARD CONSTRAINTS (MUST FOLLOW):**\n"
+            "1) Output ONLY a single valid JSON object (no markdown, no extra text).\n"
+            "2) English ONLY. No newline characters anywhere.\n"
+            "3) topic <= 4 words.\n"
+            "4) question <= 30 words and ends with '?'.\n"
+            "5) choices: exactly four strings, each <= 10 words, formatted as A) ... B) ... C) ... D) ...\n"
+            "6) Exactly ONE correct answer; answer field must be ONLY the letter {2}.\n"
+            "7) Token budget: total tokens for [topic+question+choices+answer] must be <= 150.\n"
+            "8) explanation <= 100 words (keep concise).\n\n"
+            "**QUALITY RULES:**\n"
+            "- Fully specified (no missing info).\n"
+            "- No contradictions.\n"
+            "- Plausible distractors.\n\n"
+            "{5}"
+            "RESPONSE FORMAT: Strictly output JSON exactly like:\n"
+            "{{\n"
+            '  "topic": "{7}",\n'
+            '  "question": "...?",\n'
+            '  "choices": ["A) ...", "B) ...", "C) ...", "D) ..."],\n'
+            '  "answer": "{8}",\n'
+            '  "explanation": "Briefly justify why {9} is correct."\n'
+            "}}"
         )
 
-        return prompt, sys_prompt1 if self.select_prompt1 else sys_prompt2
+        # Remove preferential bias for options
+        correct_option = random.choice(["A", "B", "C", "D"])
+        distractors = ", ".join([opt for opt in ["A", "B", "C", "D"] if opt != correct_option])
 
-    def answer_question(
-        self, question_data: Dict | List[Dict], **kwargs
-    ) -> Tuple[List[Dict], int | None, float | None]:
-        """Generate answer(s) for the given question(s)"""
-        if isinstance(question_data, list):
+        if wicl:
+            inc_samples_ex = self.build_inc_samples(inc_samples, topic)
+        else:
+            inc_samples_ex = ""
+
+        prompt = tmpl.format(
+            topic,
+            topic,
+            correct_option,
+            distractors,
+            correct_option,
+            inc_samples_ex,
+            topic,
+            topic.split("/")[-1],
+            correct_option,
+            correct_option,
+        )
+
+        return prompt, sys_prompt
+
+    def generate_question(
+        self,
+        topic: Tuple[str, str] | List[Tuple[str, str]],
+        wadvsys: bool,
+        wicl: bool,
+        inc_samples: Dict[str, List[Dict[str, str]]] | None,
+        **gen_kwargs,
+    ) -> Tuple[List[str], int | None, float | None]:
+        """Generate a question prompt for the LLM"""
+        if isinstance(topic, list):
             prompt = []
-            for qd in question_data:
-                p, sp = self.build_prompt(qd)
+            for t in topic:
+                p, sp = self.build_prompt(
+                    f"{t[0]}/{t[1]}", wadvsys, wicl, inc_samples[t[1]]
+                )
                 prompt.append(p)
         else:
-            prompt, sp = self.build_prompt(question_data)
+            prompt, sp = self.build_prompt(
+                f"{topic[0]}/{topic[1]}", wadvsys, wicl, inc_samples[topic[1]]
+            )
 
-        resp, tl, gt = self.agent.generate_response(prompt, sp, **kwargs)
+        resp, tl, gt = self.agent.generate_response(prompt, sp, **gen_kwargs)
 
-        if (
-            isinstance(resp, list) and all(isinstance(r, str) for r in resp)
-        ) or isinstance(resp, str):
+        if (isinstance(resp, list) and all(isinstance(r, str) for r in resp)) or isinstance(resp, str):
             return resp, tl, gt
         else:
             return (
@@ -79,203 +160,194 @@ class AnsweringAgent(object):
                 gt,
             )
 
-    def answer_batches(
-        self, questions: List[Dict], batch_size: int = 5, **kwargs
-    ) -> Tuple[List[Dict], List[int | None], List[float | None]]:
-        """Answer questions in batches"""
-        answers = []
+    def generate_batches(
+        self,
+        num_questions: int,
+        topics: Dict[str, List[str]],
+        batch_size: int = 5,
+        wadvsys: bool = True,
+        wicl: bool = True,
+        inc_samples: Dict[str, List[Dict[str, str]]] | None = None,
+        **kwargs,
+    ) -> Tuple[List[str], List[int | None], List[float | None]]:
+        extended_topics = self.populate_topics(topics, num_questions)
+        questions = []
         tls, gts = [], []
-        total_batches = (len(questions) + batch_size - 1) // batch_size
-        pbar = tqdm(total=total_batches, desc="STEPS: ", unit="batch")
-        for i in range(0, len(questions), batch_size):
-            batch_questions = questions[i : i + batch_size]
-            batch_answers, tl, gt = self.answer_question(batch_questions, **kwargs)
-            answers.extend(batch_answers)
-            tls.append(tl)
-            gts.append(gt)
+
+        total_batches = (len(extended_topics) + batch_size - 1) // batch_size
+        pbar = tqdm(total=total_batches, desc="STEPS: ")
+
+        for i in range(0, len(extended_topics), batch_size):
+            batch_topics = extended_topics[i : i + batch_size]
+            batch_questions = self.generate_question(
+                batch_topics, wadvsys, wicl, inc_samples, **kwargs
+            )
+            questions.extend(batch_questions[0]), tls.append(batch_questions[1]), gts.append(batch_questions[2])
             pbar.update(1)
 
-        # Handle last batch with less than batch_size
-        if len(questions) % batch_size != 0:
-            batch_questions = questions[-(len(questions) % batch_size) :]
-            batch_answers = self.answer_question(batch_questions, **kwargs)
-            answers.extend(batch_answers[0])
-            tls.append(batch_answers[1])
-            gts.append(batch_answers[2])
+        if len(extended_topics) % batch_size != 0:
+            batch_topics = extended_topics[-(len(extended_topics) % batch_size) :]
+            batch_questions = self.generate_question(
+                batch_topics, wadvsys, wicl, inc_samples, **kwargs
+            )
+            questions.extend(batch_questions[0]), tls.append(batch_questions[1]), gts.append(batch_questions[2])
             pbar.update(1)
+
         pbar.close()
-        return answers, tls, gts
+        return questions, tls, gts
 
-    def count_tokens_a(self, text: str) -> int:
-        """Count the number of tokens in the text using the agent's tokenizer"""
+    def count_tokens_q(self, text: str) -> int:
         if not hasattr(self.agent, "tokenizer"):
             raise AttributeError("The agent does not have a tokenizer attribute.")
         return len(self.agent.tokenizer.encode(text, add_special_tokens=False))
 
-    def filter_answers(self, ans: List[str | Dict[str, str]]) -> List[Dict[str, str]]:
-        r"""Filter answers to ensure they are in the correct format"""
-
-        def basic_checks(a1: Dict[str, str]) -> bool:
-            # check required keys
-            required_keys = ["answer"]
-            if all((key in a1) and isinstance(a1[key], str) for key in required_keys):
-                if len(a1["answer"]) == 1 and (a1["answer"] not in "ABCDabcd"):
-                    return False
-                check_len = self.count_tokens_a(a1["answer"])
-                if check_len < 50:
-                    check_len += self.count_tokens_a(a1.get("reasoning", "None"))
-                    if check_len < 512:
-                        # check answer format - EXTRA checks
-                        # if len(a1['answer']) == 1 and a1['answer'].upper() in 'ABCD':
-                        return True
+    def filter_questions(
+        self, questions: List[str | Dict[str, str | Any]]
+    ) -> List[Dict[str, str | Any]]:
+        def basic_checks(q2: Dict[str, str]) -> bool:
+            required_keys = ["topic", "question", "choices", "answer"]
+            if all((key in q2) for key in required_keys):
+                checks = all(
+                    isinstance(choice, str)
+                    and len(choice) > 2
+                    and choice[0].upper() in "ABCD"
+                    for choice in q2["choices"]
+                )
+                if isinstance(q2["choices"], list) and len(q2["choices"]) == 4 and checks:
+                    check_len = sum(self.count_tokens_q(q2[k]) for k in ["question", "answer"])
+                    check_len += (sum(self.count_tokens_q(choice) for choice in q2["choices"]) - 15)
+                    if check_len < 130:
+                        if (check_len + self.count_tokens_q(q2.get("explanation", "None")) <= 1024):
+                            if isinstance(q2["answer"], str):
+                                return True
             return False
 
-        filtered_answers = []
-        for i, a in enumerate(ans):
-            if isinstance(a, dict):
-                if basic_checks(a):
-                    filtered_answers.append(a)
-                else:
-                    filtered_answers.append(None)
-                    print(f"Skipping invalid answer at index {i}: {a}")
-            elif isinstance(a, str):
-                # Basic checks: at least with correct JSON format
+        correct_format_question = []
+        for i, q in enumerate(questions):
+            if isinstance(q, dict):
+                if basic_checks(q):
+                    correct_format_question.append(q)
+            elif isinstance(q, str):
                 try:
-                    a1 = json.loads(a)
-                    if basic_checks(a1):
-                        filtered_answers.append(a1)
-                    else:
-                        filtered_answers.append(None)
-                        print(f"Skipping invalid answer at index {i}: {a}")
+                    q1 = json.loads(q)
+                    if basic_checks(q1):
+                        correct_format_question.append(q1)
                 except json.JSONDecodeError:
-                    # If JSON decoding fails, skip this answer
-                    print(f"Skipping invalid JSON at index {i}: {a}")
-                    filtered_answers.append(None)
+                    print(f"Skipping invalid JSON at index {i}: {q}")
                     continue
             else:
-                # If the answer is neither a dict nor a str, skip it
-                print(f"Skipping unsupported type at index {i}: {type(a)}")
-                filtered_answers.append(None)
-        return filtered_answers
+                continue
 
-    def save_answers(self, answers: List[str], file_path: str | Path) -> None:
-        """Save generated answers to a JSON file"""
-        # check for existence of dir
+        if len(correct_format_question) >= 0.5 * len(questions):
+            return correct_format_question
+        return list()
+
+    def save_questions(self, questions: Any, file_path: str | Path) -> None:
         file_path = Path(file_path)
         file_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(file_path, "w") as f:
-            json.dump([a for a in answers], f, indent=4)
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(questions, f, indent=4, ensure_ascii=False)
 
-    def _format_choices(self, choices: List[str]) -> str:
-        r"""Format the choices for better readability"""
-        formatted = []
-        for choice in choices:
-            # Ensure each choice starts with a letter if not already formatted
-            if not re.match(r"^[A-D]\)", choice.strip()):
-                # Extract letter from existing format or assign based on position
-                letter = chr(65 + len(formatted))  # A, B, C, D
-                formatted.append(f"{letter}) {choice.strip()}")
-            else:
-                formatted.append(choice.strip())
-        return " ".join(formatted)
+    def populate_topics(self, topics: Dict[str, List[str]], num_questions: int) -> List[str]:
+        if not isinstance(topics, dict):
+            raise ValueError("Topics must be a dictionary with topic names as keys and lists of subtopics as values.")
+        all_subtopics = [(t, st) for t, sublist in topics.items() for st in sublist]
+        if not all_subtopics:
+            raise ValueError("No subtopics found in the provided topics dictionary.")
+        selected_topics = random.choices(all_subtopics, k=num_questions)
+        return selected_topics
+
+    @staticmethod
+    def load_icl_samples(file_path: str | Path) -> Dict[str, List[Dict[str, str]]]:
+        file_path = Path(file_path)
+        if not file_path.exists():
+            raise FileNotFoundError(f"File {file_path} does not exist.")
+        with open(file_path, "r", encoding="utf-8") as f:
+            samples = json.load(f)
+        if not isinstance(samples, dict):
+            raise ValueError("Samples must be inside dictionary.")
+        return samples
 
 
-# Example usage
 if __name__ == "__main__":
-    import json
-    import yaml
     import argparse
-    from utils.build_prompt import auto_json, option_extractor_prompt
+    import yaml
 
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    # python -m agents.answer_agent --input_file outputs/filtered_questions.json --output_file outputs/answers.json --batch_size 5 --verbose
-    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    argparser = argparse.ArgumentParser(description="Run the Answering Agent")
-    argparser.add_argument(
-        "--input_file",
-        type=str,
-        default="outputs/filtered_questions.json",
-        help="Path to the input JSON file with questions",
-    )
-    argparser.add_argument(
-        "--output_file",
-        type=str,
-        default="outputs/answers.json",
-        help="Path to save the answers",
-    )
-    argparser.add_argument(
-        "--batch_size", type=int, default=5, help="Batch size for processing questions"
-    )
-    argparser.add_argument(
-        "--verbose", action="store_true", help="Enable verbose output"
-    )
+    argparser = argparse.ArgumentParser(description="Generate questions using the QuestioningAgent.")
+    argparser.add_argument("--num_questions", type=int, default=10, help="Total number of questions to generate.")
+    argparser.add_argument("--output_file", type=str, default="outputs/questions.json", help="Output file name.")
+    argparser.add_argument("--batch_size", type=int, default=5, help="Batch size for generating questions.")
+    argparser.add_argument("--verbose", action="store_true", help="Enable verbose output.")
     args = argparser.parse_args()
 
-    SELECT_PROMPT1 = False  # Use the first system prompt for answering
+    inc_samples = QuestioningAgent.load_icl_samples("assets/topics_example.json")
 
-    # Load sample questions (assuming they're saved from QuestioningAgent)
-    with open(args.input_file, "r") as f:
-        sample_questions = json.load(f)
+    with open("assets/topics.json", "r", encoding="utf-8") as f:
+        topics = json.load(f)
 
-    agent = AnsweringAgent(select_prompt1=SELECT_PROMPT1)
+    agent = QuestioningAgent()
 
-    # gen_kwargs = {"tgps_show": True, "max_new_tokens": 512, "temperature": 0.1, "top_p": 0.9, "do_sample": True}
     gen_kwargs = {"tgps_show": True}
-    with open("agen.yaml", "r") as f:
+    with open("qgen.yaml", "r", encoding="utf-8") as f:
         gen_kwargs.update(yaml.safe_load(f))
-    answer, tls, gts = agent.answer_batches(
-        questions=sample_questions, batch_size=args.batch_size, **gen_kwargs
-    )
-    ans = []
-    for idx, (q, a) in enumerate(zip(sample_questions, answer)):
-        if args.verbose:
-            print(f"\n=== Question {idx+1} ===")
-            print(f"Question: {q.get('question', 'N/A')}")
-            print(f"Expected: {q.get('answer', 'N/A')}")
-            print(f"Model Answer:\n{a}")
-        try:
-            a = json.loads(a)
-            if all(k in a for k in ["answer", "reasoning"]):
-                # ++++++++++++++++++++++++++
-                # TODO: IMPROVE THE FOLLOWING
-                if len(a["answer"]) != 1:
-                    a["answer"] = agent.agent.generate_response(
-                        option_extractor_prompt(a["answer"], q["choices"])
-                    )
-                # ++++++++++++++++++++++++++
-            else:
-                # the dictionary is not as expected. So extract it using the same model: Self-Reflection
-                prompt = (
-                    "Extract **ONLY** the answer and reasoning while discarding the rest.\n\n"
-                    "String:\n"
-                    "{}\n\n"
-                    "Given Format:\n"
-                    "{{\n"
-                    '    "answer": "Only the option letter (A, B, C, or D)",\n'
-                    '    "reasoning": "..."\n'
-                    "}}"
-                )
-                a = agent.agent.generate_response(
-                    prompt.format(json.dumps(a, indent=4))
-                )
-        except json.JSONDecodeError:
-            a = agent.agent.generate_response(auto_json(a))
-        ans.append(a)
 
+    question, tls, gts = agent.generate_batches(
+        num_questions=args.num_questions,
+        topics=topics,
+        batch_size=args.batch_size,
+        wadvsys=True,
+        wicl=True,
+        inc_samples=inc_samples,
+        **gen_kwargs,
+    )
+
+    print(f"Generated {len(question)} questions!")
     if args.verbose:
+        for q in question:
+            print(q, flush=True)
+        print("\n" + "=" * 50 + "\n\n")
         if gen_kwargs.get("tgps_show", False):
-            for idx, (tl, gt) in enumerate(zip(tls, gts)):
-                print(f"BATCH - {idx}")
-                print(f"Tokens: {tl}, Time: {gt:.3f} seconds")
-                print(f"TGPS: {tl/gt:.3f} seconds")
-            print("\n" + "=" * 50)
+            print("Time taken per batch generation:", gts)
+            print("Tokens generated per batch:", tls)
             print(
-                f"Total Time: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; TGPS: {sum(tls)/sum(gts):.3f} seconds"
+                f"Total Time Taken: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; "
+                f"TGPS: {sum(tls)/sum(gts):.3f} tokens/sec\n\n"
             )
+        print("\n" + "+" * 50 + "\n")
 
-    # Save answers
-    agent.save_answers(ans, args.output_file)
-    filtered_file_name = args.output_file.replace(
-        "answers.json", "filtered_answers.json"
-    )
-    agent.save_answers(agent.filter_answers(ans), filtered_file_name)
+    ques = []
+    for q in question:
+        try:
+            json.loads(q)
+        except json.JSONDecodeError as e:
+            print(f"Invalid JSON format in question: {q}\nError: {e}")
+            prompt = (
+                "Extract ONLY the topic, question, choices, answer, and explanation.\n"
+                "Remove ```json and ``` markers if present.\n"
+                "No newlines. Output ONLY one valid JSON object.\n\n"
+                "String:\n"
+                "{}\n\n"
+                "Given Format:\n"
+                "{{"
+                "\"topic\":\"...\","
+                "\"question\":\"...?\","
+                "\"choices\":[\"A) ...\",\"B) ...\",\"C) ...\",\"D) ...\"],"
+                "\"answer\":\"A|B|C|D\","
+                "\"explanation\":\"...\""
+                "}}"
+            )
+            q, _, _ = agent.agent.generate_response(
+                prompt.format(q),
+                "You are an expert JSON extractor. Output ONLY JSON. English only. No newlines.",
+                max_new_tokens=1024,
+                temperature=0.0,
+                do_sample=False,
+            )
+        ques.append(q)
+
+    agent.save_questions(ques, args.output_file)
+
+    filtered_file_name = args.output_file.replace("questions.json", "filtered_questions.json")
+    agent.save_questions(agent.filter_questions(ques), filtered_file_name)
+
+    print(f"Saved to {args.output_file} and {filtered_file_name}!")
